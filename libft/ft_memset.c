@@ -6,13 +6,25 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:52:15 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/07 15:20:17 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/07 17:58:55 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
+#include <stdio.h>
+#include <string.h>
 
-void *memset(void *s, int c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	
+	size_t	i;
+	char	*str;
+
+	i = 0;
+	str = s;
+	while (i <= n)
+	{
+		str[i] = (unsigned char)c;
+		i++;
+	}
+	s = str;
+	return (s);
 }
