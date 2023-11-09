@@ -6,11 +6,11 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:25:40 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/07 14:37:11 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/08 15:05:39 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {
