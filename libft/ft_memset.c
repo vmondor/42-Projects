@@ -6,12 +6,11 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:52:15 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/07 17:58:55 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/08 15:05:18 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
 void	*ft_memset(void *s, int c, size_t n)
 {
