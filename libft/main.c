@@ -5,28 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 12:00:10 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/07 18:01:26 by vmondor          ###   ########.fr       */
+/*   Created: 2023/11/09 15:38:03 by vmondor           #+#    #+#             */
+/*   Updated: 2023/11/09 16:39:09 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n);
+//void	*ft_memmove(void *dest, const void *src, size_t n);
 
 int	main(void)
 {
-	void	*test;
-	void	*true;
-	char	*restest;
-	char	*restrue;
-	char	*tab[5];
+	char chaine[20] = "Hello, World!";
+//	char dest[20];
+//	char chainep[20] = "Hello, World!";
 
-	test = ft_memset(tab, '1', 5);
-	true = memset(tab, '1', 5);
-	restest = test;
-	restrue = true;
-	printf("%s : %s", restest, restrue);
+	memmove(chaine + 7, chaine + 12, 6);
+//	ft_memmove(chainep + 7, chainep + 12, 6);
+	printf("Resultat ordi : %s\n", chaine);
+//	printf("Resultat perso : %s\n", chainep);
+	return (0);
 }
