@@ -1,46 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 18:06:07 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/10 17:50:29 by vmondor          ###   ########.fr       */
+/*   Created: 2023/11/10 17:48:31 by vmondor           #+#    #+#             */
+/*   Updated: 2023/11/10 18:05:24 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
-	size_t	srclen;
+	size_t	c;
+	size_t	n_len;
+	char	*flag;
 
-	srclen = 0;
-	while (src[srclen])
-		srclen++;
-	if (size == 0)
-		return (srclen);
 	i = 0;
-	while ((i < (size - 1)) && src[i])
+	flag = (char *)big;
+	n_len = ft_strlen(little);
+	if (n_len == 0 || big == little)
+		return (flag);
+	while (flag[i] != '\0' && i < len)
 	{
-		dst[i] = src[i];
+		c = 0;
+		while (flag[i + c] != '\0' && little[c] != '\0'
+			&& flag[i + c] == little[c] && i + c < len)
+			c++;
+		if (c == n_len)
+			return (flag + i);
 		i++;
 	}
-	dst[i] = '\0';
-	return (srclen);
-}
-/*
-#include <stdio.h>
-int	main(void)
-{
-	char	dest[] = "srcDEST";
-	char	src[] = "st";
-	unsigned int	compt;
-
-	compt = ft_strlcpy(dest, src, 5);
-	printf("%d", compt);
 	return (0);
 }
-*/

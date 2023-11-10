@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 12:00:10 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/10 16:34:59 by vmondor          ###   ########.fr       */
+/*   Created: 2023/11/10 14:53:32 by vmondor           #+#    #+#             */
+/*   Updated: 2023/11/10 15:05:23 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
-#include <stdio.h>
-#include <string.h>
-
-void	*ft_memset(void *s, int c, size_t n);
-
-int	main(void)
+int	ft_tolower(int c)
 {
-	return (0);
+	if (c >= 65 && c <= 90)
+		return (c + 32);
+	else
+		return (c);
 }

@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:14:09 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/10 12:48:11 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/10 12:48:14 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,15 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+
 /*
 int	main(void)
 {
-	char source[] = "Hello World";
-	char source2[] = "Hello World !";
-	char destination[20];
-	char destination2[20];
+	char	src[10] = "SUCCESS";
+	void	*dest = NULL;
 
-	memcpy(destination, source, sizeof(source));
-	ft_memcpy(destination2, source2, sizeof(source));
-	printf("Resultat ordi\t: %s : %s\n", source, destination);
-	printf("Resultat perso\t: %s : %s\n", source2, destination2);
+	dest = ft_memcpy(dest, src, 10);
+	printf("%s\n", (unsigned char*)dest);
 	return (0);
 }
 */

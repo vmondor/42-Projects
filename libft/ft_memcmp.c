@@ -1,46 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 18:06:07 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/10 17:50:29 by vmondor          ###   ########.fr       */
+/*   Created: 2023/11/10 17:23:47 by vmondor           #+#    #+#             */
+/*   Updated: 2023/11/10 17:35:03 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
-	size_t	srclen;
+	const unsigned char	*str;
+	const unsigned char	*str2;
+	size_t				i;
 
-	srclen = 0;
-	while (src[srclen])
-		srclen++;
-	if (size == 0)
-		return (srclen);
+	str = (const unsigned char *)s1;
+	str2 = (const unsigned char *)s2;
 	i = 0;
-	while ((i < (size - 1)) && src[i])
+	while (i < n)
 	{
-		dst[i] = src[i];
+		if (str[i] != str2[i])
+			return (str[i] - str2[i]);
 		i++;
 	}
-	dst[i] = '\0';
-	return (srclen);
-}
-/*
-#include <stdio.h>
-int	main(void)
-{
-	char	dest[] = "srcDEST";
-	char	src[] = "st";
-	unsigned int	compt;
-
-	compt = ft_strlcpy(dest, src, 5);
-	printf("%d", compt);
 	return (0);
 }
-*/

@@ -1,46 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 18:06:07 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/10 17:50:29 by vmondor          ###   ########.fr       */
+/*   Created: 2023/11/10 16:46:54 by vmondor           #+#    #+#             */
+/*   Updated: 2023/11/10 17:56:57 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t	i;
-	size_t	srclen;
+	const char	*str;
+	size_t		i;
 
-	srclen = 0;
-	while (src[srclen])
-		srclen++;
-	if (size == 0)
-		return (srclen);
+	str = (const char *)s;
 	i = 0;
-	while ((i < (size - 1)) && src[i])
+	while (i < n)
 	{
-		dst[i] = src[i];
+		if (str[i] == c)
+			return ((void *)(s + i));
 		i++;
 	}
-	dst[i] = '\0';
-	return (srclen);
+	return (0);
 }
+
 /*
+#include <string.h>
 #include <stdio.h>
+
 int	main(void)
 {
-	char	dest[] = "srcDEST";
-	char	src[] = "st";
-	unsigned int	compt;
-
-	compt = ft_strlcpy(dest, src, 5);
-	printf("%d", compt);
+	char	str[20] = " Valentin Mondor";
+	void	*result;
+	void	*result2;
+	
+	result = memchr(str, (int)'M', 20);
+	result2 = ft_memchr(str, (int)'M', 20);
+	printf("%s : %s\n", (char *)result, (char *)result2);
 	return (0);
 }
 */

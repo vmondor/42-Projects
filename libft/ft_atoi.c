@@ -1,46 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 18:06:07 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/10 17:50:29 by vmondor          ###   ########.fr       */
+/*   Created: 2023/11/10 18:00:51 by vmondor           #+#    #+#             */
+/*   Updated: 2023/11/10 18:08:18 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	ft_atoi(const char *nptr)
 {
-	size_t	i;
-	size_t	srclen;
+	int	number;
+	int	i;
+	int	negative;
 
-	srclen = 0;
-	while (src[srclen])
-		srclen++;
-	if (size == 0)
-		return (srclen);
+	number = 0;
 	i = 0;
-	while ((i < (size - 1)) && src[i])
+	negative = 0;
+	while ((nptr[i] > 8 && nptr[i] < 14) || nptr[i] == 32)
+		i++;
+	while (nptr[i] == '-' || nptr[i] == '+')
 	{
-		dst[i] = src[i];
+		if (nptr[i] == '-')
+			negative++;
 		i++;
 	}
-	dst[i] = '\0';
-	return (srclen);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		number = number * 10 + (nptr[i] - 48);
+		i++;
+	}
+	if (negative % 2 != 0)
+		number = number * -1;
+	return (number);
 }
 /*
 #include <stdio.h>
+
 int	main(void)
 {
-	char	dest[] = "srcDEST";
-	char	src[] = "st";
-	unsigned int	compt;
-
-	compt = ft_strlcpy(dest, src, 5);
-	printf("%d", compt);
-	return (0);
+	char	str[] = " ---+--+1234ab567";
+	printf("%d\n", ft_atoi(str));
 }
 */

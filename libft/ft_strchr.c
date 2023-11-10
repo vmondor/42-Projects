@@ -1,46 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 18:06:07 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/10 17:50:29 by vmondor          ###   ########.fr       */
+/*   Created: 2023/11/10 15:13:02 by vmondor           #+#    #+#             */
+/*   Updated: 2023/11/10 17:14:12 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-	size_t	srclen;
+	int	i;
 
-	srclen = 0;
-	while (src[srclen])
-		srclen++;
-	if (size == 0)
-		return (srclen);
 	i = 0;
-	while ((i < (size - 1)) && src[i])
+	while (s[i])
 	{
-		dst[i] = src[i];
+		if (s[i] == c)
+			return ((char *)s + i);
 		i++;
 	}
-	dst[i] = '\0';
-	return (srclen);
+	if (s[i] == c)
+		return ((char *)s + i);
+	return (0);
 }
+
 /*
 #include <stdio.h>
+#include <string.h>
+
 int	main(void)
 {
-	char	dest[] = "srcDEST";
-	char	src[] = "st";
-	unsigned int	compt;
+	char	str[20] = "Valentin";
+	char	str2[20] = "Valentin";
 
-	compt = ft_strlcpy(dest, src, 5);
-	printf("%d", compt);
+	printf("%s : %s\n", strchr(str, 'i'), ft_strchr(str2, 'i'));
 	return (0);
 }
 */

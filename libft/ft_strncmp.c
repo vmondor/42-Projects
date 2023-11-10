@@ -1,46 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 18:06:07 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/10 17:50:29 by vmondor          ###   ########.fr       */
+/*   Created: 2023/11/10 16:34:35 by vmondor           #+#    #+#             */
+/*   Updated: 2023/11/10 17:54:36 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
-	size_t	srclen;
+	size_t	flag;
 
-	srclen = 0;
-	while (src[srclen])
-		srclen++;
-	if (size == 0)
-		return (srclen);
 	i = 0;
-	while ((i < (size - 1)) && src[i])
+	flag = 0;
+	if (n == 0)
+		return (flag);
+	while (i < n && s1[i] && s2[i] && s1[i] == s2[i])
 	{
-		dst[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
-	return (srclen);
+	if (i == n)
+		return (flag);
+	flag = s1[i] - s2[i];
+	return (flag);
 }
+
 /*
+#include <string.h>
 #include <stdio.h>
+
 int	main(void)
 {
-	char	dest[] = "srcDEST";
-	char	src[] = "st";
-	unsigned int	compt;
+	int	result;
+	int	n;
+	const char	s1[] = "Sadwedwedewme";
+	const char	s2[] = "mize";
+	char	sa[] = "Sadwedwedewme";
+	char	sb[] = "mize";
 
-	compt = ft_strlcpy(dest, src, 5);
-	printf("%d", compt);
+	n = 4;
+	printf("%d : %d\n", strncmp(s1, s2, n), ft_strncmp(sa, sb, n));
 	return (0);
 }
 */
