@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:14:09 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/09 16:05:59 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/10 12:48:11 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t		i;
-	char		*desttemp;
-	const char	*srctemp;
+	char		*dest_temp;
+	const char	*src_temp;
 
 	if (!dest && !src)
 		return (0);
-	desttemp = dest;
-	srctemp = src;
+	dest_temp = dest;
+	src_temp = src;
 	i = 0;
 	while (i <= n)
 	{
-		desttemp[i] = srctemp[i];
+		dest_temp[i] = src_temp[i];
 		i++;
 	}
 	return (dest);
