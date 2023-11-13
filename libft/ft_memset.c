@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:52:15 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/10 16:34:12 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/13 16:31:19 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ void	*ft_memset(void *s, int c, size_t n)
 	size_t	i;
 	char	*str;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	str = s;
-	while (i <= n)
+	while (i < n)
 	{
 		str[i] = (unsigned char)c;
 		i++;

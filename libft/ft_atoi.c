@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 18:00:51 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/10 18:08:18 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/13 18:10:25 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,32 @@ int	ft_atoi(const char *nptr)
 	number = 0;
 	i = 0;
 	negative = 0;
+	if (!nptr)
+		return (0);
 	while ((nptr[i] > 8 && nptr[i] < 14) || nptr[i] == 32)
 		i++;
-	while (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i] == '-')
-			negative++;
+	if (nptr[i] == '-')
+		negative = -1;
+	else
+		negative = 1;
+	if (negative == -1 || nptr[i] == '+')
 		i++;
-	}
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		number = number * 10 + (nptr[i] - 48);
 		i++;
 	}
-	if (negative % 2 != 0)
-		number = number * -1;
+	number = number * negative;
 	return (number);
 }
+
 /*
 #include <stdio.h>
+#include <stdlib.h>
 
 int	main(void)
 {
-	char	str[] = " ---+--+1234ab567";
-	printf("%d\n", ft_atoi(str));
+	char	str[] = "+-54";
+	printf("%d : %d\n", atoi(str), ft_atoi(str));
 }
 */

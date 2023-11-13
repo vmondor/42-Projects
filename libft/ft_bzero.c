@@ -6,11 +6,11 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:39:01 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/08 14:07:51 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/13 16:31:32 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -19,9 +19,10 @@ void	ft_bzero(void *s, size_t n)
 
 	i = 0;
 	str = s;
-	while (i <= n)
+	while (i < n)
 	{
 		str[i] = 0;
 		i++;
 	}
+	s = str;
 }

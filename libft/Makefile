@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pheno <pheno@gmail.com>                    +#+  +:+       +#+         #
+#    By: pheno <pheno@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/08 19:47:45 by pheno             #+#    #+#              #
-#    Updated: 2023/11/09 01:13:34 by pheno            ###   ########.fr        #
+#    Created: 2023/11/08 19:47:45 by vmondor           #+#    #+#              #
+#    Updated: 2023/11/13 19:20:55 by pheno            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,36 @@
 
 NAME		= libft.a
 
-CC		= gcc
+CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 
 ##################################
 ## SOURCES
 
-SRC_FILES	= ft_isalpha \
-		  main
+SRC_FILES		= ft_isalpha \
+					ft_isdigit \
+					ft_isalnum \
+					ft_isascii \
+					ft_isprint \
+					ft_strlen \
+					ft_memset \
+					ft_bzero \
+					ft_memcpy \
+					ft_memmove \
+					ft_strlcpy \
+					ft_strlcat \
+					ft_toupper \
+					ft_tolower \
+					ft_strchr \
+					ft_strrchr \
+					ft_strncmp \
+					ft_memchr \
+					ft_memcmp \
+					ft_strnstr \
+					ft_atoi \
+					ft_calloc \
+					ft_strdup
+
 
 OBJ_FILES	= $(addsuffix .o, $(SRC_FILES))
 
@@ -32,10 +54,8 @@ OBJ_FILES	= $(addsuffix .o, $(SRC_FILES))
 all: ${NAME}
 
 ${NAME}: ${OBJ_FILES}
-	${CC} ${OBJ_FILES} -o ${NAME}
-
-%.o: ${SRC_FILES}.c
-	${CC} ${CFLAGS} -c $< -o $@
+	# ${CC} ${OBJ_FILES} -o ${NAME}
+	ar rcs ${NAME} ${OBJ_FILES}
 
 clean:
 	rm -f *.o

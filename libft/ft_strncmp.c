@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:34:35 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/10 17:54:36 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/13 18:11:08 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 	i = 0;
 	flag = 0;
-	if (n == 0)
-		return (flag);
-	while (i < n && s1[i] && s2[i] && s1[i] == s2[i])
+	while (i < n && s1[i] && s2[i])
 	{
+		if (s1[i] != s2[i])
+			flag = s1[i] - s2[i];
 		i++;
 	}
-	if (i == n)
-		return (flag);
-	flag = s1[i] - s2[i];
+	if (i < n)
+		flag = s1[i] - s2[i];
 	return (flag);
 }
 
