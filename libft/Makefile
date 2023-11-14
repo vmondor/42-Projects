@@ -6,7 +6,7 @@
 #    By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 19:47:45 by vmondor           #+#    #+#              #
-#    Updated: 2023/11/13 19:24:06 by vmondor          ###   ########.fr        #
+#    Updated: 2023/11/14 15:32:13 by vmondor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,9 @@ SRC_FILES		= ft_isalpha \
 					ft_strnstr \
 					ft_atoi \
 					ft_calloc \
-					ft_strdup
+					ft_strdup \
+					ft_substr \
+					ft_strjoin
 
 
 OBJ_FILES	= $(addsuffix .o, $(SRC_FILES))

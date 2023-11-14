@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:08:28 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/10 17:48:13 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/14 16:18:39 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	*dest_temp;
-	unsigned char	*src_temp;
+	char	*dest_temp;
+	char	*src_temp;
 
 	if (dest == src || n == 0)
 		return (dest);
 	if (dest < src)
 	{
-		dest_temp = (unsigned char *)dest;
-		src_temp = (unsigned char *)src;
+		dest_temp = (char *)dest;
+		src_temp = (char *)src;
 		while (n--)
 			*dest_temp++ = *src_temp++;
 	}
 	else
 	{
-		dest_temp = (unsigned char *)dest + (n - 1);
-		src_temp = (unsigned char *)src + (n - 1);
+		dest_temp = (char *)dest + (n - 1);
+		src_temp = (char *)src + (n - 1);
 		while (n--)
 			*dest_temp-- = *src_temp--;
 	}
