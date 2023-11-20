@@ -6,7 +6,7 @@
 #    By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 19:47:45 by vmondor           #+#    #+#              #
-#    Updated: 2023/11/14 15:32:13 by vmondor          ###   ########.fr        #
+#    Updated: 2023/11/20 18:41:00 by vmondor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,10 +45,26 @@ SRC_FILES		= ft_isalpha \
 					ft_calloc \
 					ft_strdup \
 					ft_substr \
-					ft_strjoin
+					ft_strjoin \
+					ft_strtrim \
+					ft_strmapi \
+					ft_striteri \
+					ft_putchar_fd \
+					ft_putstr_fd \
+					ft_putendl_fd \
+					ft_putnbr_fd
+					
+FILES_BONUS		= ft_lstnew \
+					ft_lstadd_front \
+					ft_lstsize \
+					ft_lstlast \
+					ft_lstadd_back \
+					ft_lstdelone \
+					ft_lstclear \
+					ft_lstiter
 
-
-OBJ_FILES	= $(addsuffix .o, $(SRC_FILES))
+OBJ_FILES		= $(addsuffix .o, $(SRC_FILES))
+OBJ_FILES_BONUS	= $(addsuffix .o, $(FILES_BONUS))
 
 #################################
 ## RULES
@@ -59,6 +75,9 @@ ${NAME}: ${OBJ_FILES}
 	# ${CC} ${OBJ_FILES} -o ${NAME}
 	ar rcs ${NAME} ${OBJ_FILES}
 
+bonus: ${OBJ_FILES_BONUS}
+	ar rcs ${NAME} ${OBJ_FILES_BONUS}
+
 clean:
 	rm -f *.o
 
@@ -67,4 +86,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re

@@ -18,7 +18,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char		*dest_temp;
 	const char	*src_temp;
 
-	if (!dest || !src)
+	if (!dest)
 		return (NULL);
 	dest_temp = dest;
 	src_temp = src;
@@ -32,13 +32,19 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 }
 
 /*
-int	main(void)
-{
-	char	src[10] = "SUCCESS";
-	void	*dest = NULL;
+#include <string.h>
+#include <stdio.h>
 
-	dest = ft_memcpy(dest, src, 10);
-	printf("%s\n", (unsigned char*)dest);
+int main(void)
+{
+	char dest[100];
+	char src[] = {0, 0};
+	char *res;
+	char *res2;
+
+	res = (char *)ft_memcpy(dest, src, 2);
+	res2 = (char *)memcpy(dest, src, 2);
+	printf("%s : %s\n", res, res2);
 	return (0);
 }
 */

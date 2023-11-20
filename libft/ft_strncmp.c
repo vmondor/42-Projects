@@ -14,37 +14,33 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
+	int		flag;
 	size_t	i;
-	size_t	flag;
 
 	i = 0;
 	flag = 0;
 	while (i < n && s1[i] && s2[i])
 	{
 		if (s1[i] != s2[i])
-			flag = s1[i] - s2[i];
+			return (s1[i] - s2[i]);
 		i++;
 	}
 	if (i < n)
 		flag = s1[i] - s2[i];
 	return (flag);
 }
-
 /*
 #include <string.h>
 #include <stdio.h>
 
-int	main(void)
+int main(void)
 {
-	int	result;
-	int	n;
-	const char	s1[] = "Sadwedwedewme";
-	const char	s2[] = "mize";
-	char	sa[] = "Sadwedwedewme";
-	char	sb[] = "mize";
+	int res;
+	int res2;
 
-	n = 4;
-	printf("%d : %d\n", strncmp(s1, s2, n), ft_strncmp(sa, sb, n));
+	res2 = strncmp("1234", "1235", -1);
+	res = ft_strncmp("1234", "1235", -1);
+	printf("%d : %d\n", res2, res);
 	return (0);
 }
 */

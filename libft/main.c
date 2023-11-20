@@ -5,16 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 12:00:10 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/10 16:34:59 by vmondor          ###   ########.fr       */
+/*   Created: 2017/02/28 12:35:29 by jtoty             #+#    #+#             */
+/*   Updated: 2023/11/20 17:13:28 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <aio.h>
-#include <stdio.h>
-#include <string.h>
-
-void	*ft_memset(void *s, int c, size_t n);
+#include "libft.h"
 
 int	main(void)
 {

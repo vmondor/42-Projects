@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 13:18:49 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/14 15:23:54 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/16 16:31:44 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,17 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char		*str;
-	size_t		i;
+	char	*str;
+	size_t	size;
 
-	i = 0;
-	if (!s)
-		return (NULL);
-	if ((size_t)start > ft_strlen(s))
-		return (malloc(sizeof(char) * (ft_strlen(""))));
+	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
+	size = ft_strlen(s + start);
+	if (size < len)
+		len = size;
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	while (i < len)
-	{
-		str[i] = *(s + start + i);
-		i++;
-	}
-	str[i] = '\0';
+	ft_strlcpy(str, s + start, len + 1);
 	return (str);
 }
