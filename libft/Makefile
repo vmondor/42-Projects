@@ -6,7 +6,7 @@
 #    By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 19:47:45 by vmondor           #+#    #+#              #
-#    Updated: 2023/11/20 18:41:00 by vmondor          ###   ########.fr        #
+#    Updated: 2023/11/26 13:44:10 by vmondor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,50 +21,54 @@ CFLAGS		= -Wall -Wextra -Werror
 ##################################
 ## SOURCES
 
-SRC_FILES		= ft_isalpha \
-					ft_isdigit \
-					ft_isalnum \
-					ft_isascii \
-					ft_isprint \
-					ft_strlen \
-					ft_memset \
-					ft_bzero \
-					ft_memcpy \
-					ft_memmove \
-					ft_strlcpy \
-					ft_strlcat \
-					ft_toupper \
-					ft_tolower \
-					ft_strchr \
-					ft_strrchr \
-					ft_strncmp \
-					ft_memchr \
-					ft_memcmp \
-					ft_strnstr \
-					ft_atoi \
-					ft_calloc \
-					ft_strdup \
-					ft_substr \
-					ft_strjoin \
-					ft_strtrim \
-					ft_strmapi \
-					ft_striteri \
-					ft_putchar_fd \
-					ft_putstr_fd \
-					ft_putendl_fd \
-					ft_putnbr_fd
+SRC_FILES		= ft_isalpha.c \
+					ft_isdigit.c \
+					ft_isalnum.c \
+					ft_isascii.c \
+					ft_isprint.c \
+					ft_strlen.c \
+					ft_memset.c \
+					ft_bzero.c \
+					ft_memcpy.c \
+					ft_memmove.c \
+					ft_strlcpy.c \
+					ft_strlcat.c \
+					ft_toupper.c \
+					ft_tolower.c \
+					ft_strchr.c \
+					ft_strrchr.c \
+					ft_strncmp.c \
+					ft_memchr.c \
+					ft_memcmp.c \
+					ft_strnstr.c \
+					ft_atoi.c \
+					ft_calloc.c \
+					ft_strdup.c \
+					ft_substr.c \
+					ft_strjoin.c \
+					ft_strtrim.c \
+					ft_split.c \
+					ft_itoa.c \
+					ft_strmapi.c \
+					ft_striteri.c \
+					ft_putchar_fd.c \
+					ft_putstr_fd.c \
+					ft_putendl_fd.c \
+					ft_putnbr_fd.c
 					
-FILES_BONUS		= ft_lstnew \
-					ft_lstadd_front \
-					ft_lstsize \
-					ft_lstlast \
-					ft_lstadd_back \
-					ft_lstdelone \
-					ft_lstclear \
-					ft_lstiter
+FILES_BONUS		= ft_lstnew.c \
+					ft_lstadd_front.c \
+					ft_lstsize.c \
+					ft_lstlast.c \
+					ft_lstadd_back.c \
+					ft_lstdelone.c \
+					ft_lstclear.c \
+					ft_lstiter.c \
+					ft_lstmap.c
 
-OBJ_FILES		= $(addsuffix .o, $(SRC_FILES))
-OBJ_FILES_BONUS	= $(addsuffix .o, $(FILES_BONUS))
+OBJ_FILES		= ${SRC_FILES:.c=.o}
+OBJ_FILES_BONUS	= ${FILES_BONUS:.c=.o}
+
 
 #################################
 ## RULES
@@ -72,8 +76,11 @@ OBJ_FILES_BONUS	= $(addsuffix .o, $(FILES_BONUS))
 all: ${NAME}
 
 ${NAME}: ${OBJ_FILES}
-	# ${CC} ${OBJ_FILES} -o ${NAME}
 	ar rcs ${NAME} ${OBJ_FILES}
+
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC_FILES)
+	gcc -nostartfiles -shared -o libft.so $(OBJ_FILES) $(OBJ_FILES_BONUS)
 
 bonus: ${OBJ_FILES_BONUS}
 	ar rcs ${NAME} ${OBJ_FILES_BONUS}

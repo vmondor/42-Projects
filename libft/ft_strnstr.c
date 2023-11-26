@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:48:31 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/15 18:17:33 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/22 17:34:04 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	little_len;
 	char	*flag;
 
+	if ((!big || !little) && len == 0)
+		return (0);
 	i = 0;
 	flag = (char *)big;
 	little_len = ft_strlen(little);

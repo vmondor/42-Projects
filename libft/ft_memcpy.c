@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:14:09 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/13 16:30:58 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/22 18:12:46 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char		*dest_temp;
 	const char	*src_temp;
 
-	if (!dest)
+	if (!dest && !src)
 		return (NULL);
 	dest_temp = dest;
 	src_temp = src;
@@ -30,21 +30,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
-/*
-#include <string.h>
-#include <stdio.h>
-
-int main(void)
-{
-	char dest[100];
-	char src[] = {0, 0};
-	char *res;
-	char *res2;
-
-	res = (char *)ft_memcpy(dest, src, 2);
-	res2 = (char *)memcpy(dest, src, 2);
-	printf("%s : %s\n", res, res2);
-	return (0);
-}
-*/

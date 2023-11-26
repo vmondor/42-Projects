@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:52:24 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/16 19:01:35 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/22 18:13:33 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ft_strlcpy(str, s1 + begin, end - begin + 1);
 	return (str);
 }
-
-/*
-int	main(void)
-{
-	char	s1[] = "|||///Salut/Ca|Va|/";
-	char	set[] = "/|";
-
-	// Salut/Ca|Va
-	printf("%s\n", ft_strtrim(s1, set));
-	return (0);
-}*/

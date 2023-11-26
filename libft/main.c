@@ -6,13 +6,11 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:35:29 by jtoty             #+#    #+#             */
-/*   Updated: 2023/11/20 17:13:28 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/22 17:01:51 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	main(void)
+int	main(int argc, const char *argv[])
 {
 	return (0);
 }

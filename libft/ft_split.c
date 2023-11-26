@@ -6,64 +6,86 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:24:17 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/20 17:00:46 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/22 18:11:56 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_split(char const *s, char c)
+static int	ft_nb_words(char *s, char c)
 {
-	char	**tab;
-	int		a;
-	int		i;
-	int		j;
-	int		t;
-	int		ri;
+	int	i;
+	int	count;
 
 	i = 0;
-	j = 0;
-	a = 0;
-	ri = 0;
-	tab = NULL;
+	count = 0;
+	if (!s)
+		return (0);
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] && s[i] != c)
 		{
-			if (j > 0)
-				a = i - (int)ft_strlen(tab[j-1]);
-			else
-				a = i + 1;
-			tab[j] = malloc(sizeof(char) * a);
-			t = 0;
-			ri = a - i - 1;
-			while (s[ri] != c)
-			{
-				tab[j][t] = s[ri];
-				ri++;
-				t++;
-			}
-			tab[j][t] = '\0';
-			j++;
+			count++;
+			while (s[i] && s[i] != c)
+				i++;
 		}
-		i++;
+		while (s[i] && s[i] == c)
+			i++;
 	}
-	return (tab);
+	return (count);
 }
 
-/*
-int	main(void)
+static int	ft_allocate(char *s, char c)
 {
-	char	s[] = "Valentin,Fabiola,Annick,Jacques";
-	char	**tab;
-	int		i;
+	int	i;
 
-	tab = ft_split(s, ',');
 	i = 0;
-	while(tab[i])
-	{
-		printf("%d\t: %s\n", i, tab[i]);
+	if (!s)
+		return (0);
+	while (s[i] && s[i] != c)
 		i++;
+	return (i);
+}
+
+static char	**ft_strings(char *str, char c, char **strings, int string_index)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (string_index < ft_nb_words(str, c))
+	{
+		while (str[i] == c)
+			i++;
+		strings[string_index] = (char *)ft_calloc(sizeof(char),
+				(ft_allocate(&str[i], c) + 1));
+		if (!strings[string_index])
+			return (NULL);
+		j = 0;
+		while (str[i] && str[i] != c)
+		{
+			strings[string_index][j] = str[i];
+			i++;
+			j++;
+		}
+		strings[string_index][j] = '\0';
+		string_index++;
 	}
-	return (0);
-}*/
+	return (strings[string_index] = NULL, strings);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**strings;
+	char	*str;
+	int		string_index;
+	int		nb_words;
+
+	str = (char *)s;
+	nb_words = ft_nb_words(str, c);
+	strings = (char **)ft_calloc(sizeof(char *), (nb_words + 1));
+	if (!s || !strings)
+		return (NULL);
+	string_index = 0;
+	return (ft_strings(str, c, strings, string_index));
+}

@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:26:47 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/15 19:52:17 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/22 16:53:36 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*str;
 	int		i;
 
+	if (!s)
+		return (NULL);
 	str = malloc(ft_strlen(s) + 1);
 	if (!str)
 		return (NULL);

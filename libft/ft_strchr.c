@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:13:02 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/10 17:14:12 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/22 18:13:11 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,3 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s + i);
 	return (NULL);
 }
-
-/*
-#include <stdio.h>
-#include <string.h>
-
-int	main(void)
-{
-	char	str[20] = "Valentin";
-	char	str2[20] = "Valentin";
-
-	printf("%s : %s\n", strchr(str, 'i'), ft_strchr(str2, 'i'));
-	return (0);
-}
-*/

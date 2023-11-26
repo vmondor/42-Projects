@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:08:28 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/14 16:18:39 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/22 18:12:55 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-/*
-int	main(void)
-{
-	char chaine[20] = "Valentin-Mondor";
-	char chainep[20] = "Valentin-Mondor";
-
-	memmove(chaine + 7, chaine + 12, 6);
-	ft_memmove(chainep + 7, chainep + 12, 6);
-	printf("Resultat ordi : %s\n", chaine);
-	printf("Resultat perso : %s\n", chainep);
-	return (0);
-}
-*/

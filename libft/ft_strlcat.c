@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:24:11 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/13 16:47:08 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/22 17:35:19 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	destlen;
 	size_t	srclen;
 
+	if (!dst && size == 0)
+		return (0);
 	i = 0;
 	srclen = ft_strlen(src);
 	destlen = ft_strlen(dst);
