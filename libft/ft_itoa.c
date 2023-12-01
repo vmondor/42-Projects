@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:53:05 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/23 17:44:57 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/30 12:30:20 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,3 @@ char	*ft_itoa(int n)
 	}
 	return (str);
 }
-
-/*
-int main(void)
-{
-    printf("%s\n", ft_itoa(0));
-    return (0);
-}
-*/

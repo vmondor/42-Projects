@@ -6,7 +6,7 @@
 #    By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 19:47:45 by vmondor           #+#    #+#              #
-#    Updated: 2023/11/26 13:44:10 by vmondor          ###   ########.fr        #
+#    Updated: 2023/11/30 12:26:58 by vmondor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,10 +77,6 @@ all: ${NAME}
 
 ${NAME}: ${OBJ_FILES}
 	ar rcs ${NAME} ${OBJ_FILES}
-
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC_FILES)
-	gcc -nostartfiles -shared -o libft.so $(OBJ_FILES) $(OBJ_FILES_BONUS)
 
 bonus: ${OBJ_FILES_BONUS}
 	ar rcs ${NAME} ${OBJ_FILES_BONUS}

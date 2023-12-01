@@ -6,13 +6,13 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:52:24 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/22 18:13:33 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/27 18:35:52 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_begin(char const *s1, char const *set)
+static size_t	ft_begin(char const *s1, char const *set)
 {
 	size_t	i;
 	size_t	len_s1;
@@ -28,7 +28,7 @@ size_t	ft_begin(char const *s1, char const *set)
 	return (i);
 }
 
-size_t	ft_end(char const *s1, char const *set)
+static size_t	ft_end(char const *s1, char const *set)
 {
 	size_t	i;
 	size_t	len_s1;

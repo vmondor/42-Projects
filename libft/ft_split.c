@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_GOOD.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:24:17 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/22 18:11:56 by vmondor          ###   ########.fr       */
+/*   Updated: 2023/11/26 18:16:23 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_nb_words(char *s, char c)
+static int	ft_nb_words(char const *s, char c)
 {
 	int	i;
 	int	count;
@@ -35,7 +35,7 @@ static int	ft_nb_words(char *s, char c)
 	return (count);
 }
 
-static int	ft_allocate(char *s, char c)
+static int	ft_allocate(char const *s, char c)
 {
 	int	i;
 
@@ -47,24 +47,25 @@ static int	ft_allocate(char *s, char c)
 	return (i);
 }
 
-static char	**ft_strings(char *str, char c, char **strings, int string_index)
+static char	**ft_strings(char const *s, char c, char **strings,
+								int string_index)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (string_index < ft_nb_words(str, c))
+	while (string_index < ft_nb_words(s, c))
 	{
-		while (str[i] == c)
+		while (s[i] == c)
 			i++;
-		strings[string_index] = (char *)ft_calloc(sizeof(char),
-				(ft_allocate(&str[i], c) + 1));
+		strings[string_index] = (char *)malloc(sizeof(char)
+				* (ft_allocate(&s[i], c) + 1));
 		if (!strings[string_index])
 			return (NULL);
 		j = 0;
-		while (str[i] && str[i] != c)
+		while (s[i] && s[i] != c)
 		{
-			strings[string_index][j] = str[i];
+			strings[string_index][j] = s[i];
 			i++;
 			j++;
 		}
@@ -77,15 +78,13 @@ static char	**ft_strings(char *str, char c, char **strings, int string_index)
 char	**ft_split(char const *s, char c)
 {
 	char	**strings;
-	char	*str;
 	int		string_index;
 	int		nb_words;
 
-	str = (char *)s;
-	nb_words = ft_nb_words(str, c);
-	strings = (char **)ft_calloc(sizeof(char *), (nb_words + 1));
+	nb_words = ft_nb_words(s, c);
+	strings = malloc(sizeof(char *) * (nb_words + 1));
 	if (!s || !strings)
 		return (NULL);
 	string_index = 0;
-	return (ft_strings(str, c, strings, string_index));
+	return (ft_strings(s, c, strings, string_index));
 }
