@@ -6,7 +6,7 @@
 #    By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 16:10:45 by vmondor           #+#    #+#              #
-#    Updated: 2024/01/17 18:12:49 by vmondor          ###   ########.fr        #
+#    Updated: 2024/01/31 15:25:49 by vmondor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,19 +16,42 @@ CC		= gcc
 CFLAGS	= -Wall -Werror -Wextra
 
 
-# OBJ_PATH = obj/
+OBJ_PATH = obj/
+SRC_PATH = ./
 
-SRC_FILES		= push_swap.c
+SRC_FILES		=	check_input_utils.c	\
+					check_input.c		\
+					ft_split.c			\
+					insert.c			\
+					main.c				\
+					move_both.c			\
+					nodes.c				\
+					push_swap_init.c	\
+					push.c				\
+					reverse_rotate.c	\
+					rotate.c			\
+					sort_three.c		\
+					sort.c				\
+					stack_utils.c		\
+					swap.c				\
+					utils.c
 
 OBJ_FILES		= $(SRC_FILES:.c=.o)
+OBJS			= $(addprefix $(OBJ_PATH), $(OBJ_FILES))
 
-all: ${NAME}
+all: $(OBJ_PATH) ${NAME}
 
-${NAME}: ${OBJ_FILES}
-	ar rcs ${NAME} ${OBJ_FILES}
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_PATH):
+	mkdir $(OBJ_PATH)
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-	rm -f *.o
+	rm -rf *.o $(OBJ_PATH)
 
 fclean: clean
 	rm -f ${NAME}

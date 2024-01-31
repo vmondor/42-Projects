@@ -6,30 +6,47 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:25:52 by vmondor           #+#    #+#             */
-/*   Updated: 2024/01/23 13:38:14 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/01/30 15:06:15 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void    ft_putchar(char c)
+void	ft_putstr(char *str)
 {
-    write(1, &c, 1);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
 }
 
-void    ft_putstr(char *str)
+void	free_stack(t_stack **stack)
 {
-    int i;
+	t_stack	*temp;
 
-    i = 0;
-    while (str[i])
-    {
-        ft_putchar(str[i]);
-        i++;
-    }
+	if (!stack || !(*stack))
+		return ;
+	while (*stack)
+	{
+		temp = (*stack)->next;
+		free(*stack);
+		*stack = temp;
+	}
+	*stack = NULL;
 }
 
-void    ft_error(t_stack **stack_a, t_stack **stack_b)
+int	nb_abs(int nb)
+{
+	if (nb < 0)
+		return (nb * -1);
+	return (nb);
+}
+
+void	ft_error(t_stack **stack_a, t_stack **stack_b)
 {
 	if (stack_a == NULL || *stack_a != NULL)
 		free_stack(stack_a);

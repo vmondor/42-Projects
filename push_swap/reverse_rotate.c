@@ -6,13 +6,13 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:06:20 by vmondor           #+#    #+#             */
-/*   Updated: 2024/01/23 13:21:11 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/01/28 23:30:37 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_reverse_rotate(t_stack **stack)
+static void	reverse_rotate(t_stack **stack)
 {
 	t_stack	*temp;
 	t_stack	*last;
@@ -26,8 +26,21 @@ static void	ft_reverse_rotate(t_stack **stack)
 	before_last->next = NULL;
 }
 
-void	ft_rra(t_stack **stack_a)
+void	rra(t_stack **stack_a)
 {
-	ft_reverse_rotate(stack_a);
+	reverse_rotate(stack_a);
 	ft_putstr("rra\n");
+}
+
+void	rrb(t_stack **stack_b)
+{
+	reverse_rotate(stack_b);
+	ft_putstr("rrb\n");
+}
+
+void	rrr(t_stack **stack_a, t_stack **stack_b)
+{
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
+	ft_putstr("rrr\n");
 }

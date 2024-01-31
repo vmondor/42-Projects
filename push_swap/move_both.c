@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   move_both.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 12:35:00 by vmondor           #+#    #+#             */
-/*   Updated: 2024/01/28 23:32:52 by vmondor          ###   ########.fr       */
+/*   Created: 2024/01/31 13:47:20 by vmondor           #+#    #+#             */
+/*   Updated: 2024/01/31 17:02:03 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push(t_stack **stack_src, t_stack **stack_dest)
+void	rotate_both(t_stack **a, t_stack **b, t_stack *stack_cheapest)
 {
-	t_stack	*temp;
-
-	if (*stack_src == NULL)
-		return ;
-	temp = (*stack_src)->next;
-	(*stack_src)->next = *stack_dest;
-	*stack_dest = *stack_src;
-	*stack_src = temp;
+	while (*a != stack_cheapest->target && *b != stack_cheapest)
+		rr(a, b);
+	set_index(*a);
+	set_index(*b);
 }
 
-void	pa(t_stack **stack_a, t_stack **stack_b)
+void	reverse_rotate_both(t_stack **a, t_stack **b, t_stack *stack_cheapest)
 {
-	push(stack_b, stack_a);
-	ft_putstr("pa\n");
-}
-
-void	pb(t_stack **stack_a, t_stack **stack_b)
-{
-	push(stack_a, stack_b);
-	ft_putstr("pb\n");
+	while (*a != stack_cheapest->target && *b != stack_cheapest)
+		rrr(a, b);
+	set_index(*a);
+	set_index(*b);
 }

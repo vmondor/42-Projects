@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:11:49 by vmondor           #+#    #+#             */
-/*   Updated: 2024/01/23 12:23:35 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/01/30 18:08:28 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	is_sorted(t_stack *stack)
 static void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 {
 	if (stack_size == 2 && !is_sorted(*stack_a))
-		do_sa(stack_a);
+		sa(stack_a);
 	else if (stack_size == 3)
-		tiny_sort(stack_a);
+		sort_three(stack_a);
 	else if (stack_size > 3 && !is_sorted(*stack_a))
 		sort(stack_a, stack_b);
 }
@@ -43,8 +43,23 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
-	if (!is_correct_input(av))
-		ft_error(NULL, NULL);
+	if (ac == 2)
+	{
+		av = ft_split(av[1], ' ');
+		if (!is_correct_input(av, 0))
+			ft_error(NULL, NULL);
+		stack_a = stack_init_split(av);
+	}
+	else
+	{
+		if (!is_correct_input(av, 1))
+			ft_error(NULL, NULL);
+		stack_a = stack_init(ac, av);
+	}
 	stack_b = NULL;
-	stack_a = 
+	stack_size = ft_stack_size(stack_a);
+	push_swap(&stack_a, &stack_b, stack_size);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
+	return (0);
 }
