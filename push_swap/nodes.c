@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:09:45 by vmondor           #+#    #+#             */
-/*   Updated: 2024/01/31 17:01:42 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/06 15:40:16 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,23 @@ static t_stack	*return_cheapest(t_stack *stack)
 	return (cheapest);
 }
 
-static void	finish_rotation(t_stack **stack, t_stack *head, char stack_name)
+void	finish_rotation(t_stack **stack, t_stack *head, char stack_name)
 {
 	while (*stack != head)
 	{
 		if (stack_name == 'a')
 		{
 			if (head->above_median)
-				ra(stack);
+				ra(stack, false);
 			else
-				rra(stack);
+				rra(stack, false);
 		}
 		else if (stack_name == 'b')
 		{
 			if (head->above_median)
-				rb(stack);
+				rb(stack, false);
 			else
-				rrb(stack);
+				rrb(stack, false);
 		}
 	}
 }
@@ -71,5 +71,5 @@ void	move_nodes(t_stack **a, t_stack **b)
 		reverse_rotate_both(a, b, stack_cheapest);
 	finish_rotation(b, stack_cheapest, 'b');
 	finish_rotation(a, stack_cheapest->target, 'a');
-	pa(a, b);
+	pa(a, b, false);
 }

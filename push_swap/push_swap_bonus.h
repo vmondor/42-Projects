@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 14:53:32 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/10 15:05:23 by vmondor          ###   ########.fr       */
+/*   Created: 2024/02/02 18:22:16 by vmondor           #+#    #+#             */
+/*   Updated: 2024/02/03 14:52:53 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
-{
-	if (c >= 65 && c <= 90)
-		return (c + 32);
-	else
-		return (c);
-}
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# include "push_swap.h"
+
+/* Get_next_line */
+size_t	ft_strlen(char *s);
+char	*ft_strchr(char *s, int c);
+char	*ft_strdup(char *dest, char *src);
+char	*ft_strjoin(char *s1, char *s2);
+char	*get_next_line(int fd);
+
+#endif

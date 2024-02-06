@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:24:06 by vmondor           #+#    #+#             */
-/*   Updated: 2024/01/31 13:43:32 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/02 22:19:17 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,24 @@ static void	swap(t_stack **stack)
 	(*stack)->next = temp;
 }
 
-void	sa(t_stack **stack_a)
+void	sa(t_stack **stack_a, bool checker)
 {
 	swap(stack_a);
-	ft_putstr("sa\n");
+	if (!checker)
+		ft_putstr("sa\n");
 }
 
-void	ft_sb(t_stack **stack_b)
+void	sb(t_stack **stack_b, bool checker)
 {
 	swap(stack_b);
-	ft_putstr("sb\n");
+	if (!checker)
+		ft_putstr("sb\n");
 }
 
-void	ft_ss(t_stack **stack_a, t_stack **stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b, bool checker)
 {
 	swap(stack_a);
 	swap(stack_b);
-	ft_putstr("ss\n");
+	if (!checker)
+		ft_putstr("ss\n");
 }

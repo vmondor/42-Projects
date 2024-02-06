@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:11:49 by vmondor           #+#    #+#             */
-/*   Updated: 2024/01/30 18:08:28 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/06 15:47:24 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_sorted(t_stack *stack)
 static void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 {
 	if (stack_size == 2 && !is_sorted(*stack_a))
-		sa(stack_a);
+		sa(stack_a, false);
 	else if (stack_size == 3)
 		sort_three(stack_a);
 	else if (stack_size > 3 && !is_sorted(*stack_a))

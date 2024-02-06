@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 16:43:00 by vmondor           #+#    #+#             */
-/*   Updated: 2024/01/28 23:47:40 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/06 15:57:04 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,19 @@ void	sort_three(t_stack **stack)
 		return ;
 	highest = find_highest_nb(*stack);
 	if ((*stack)->nb == highest)
-		ra(stack);
+		ra(stack, false);
 	else if ((*stack)->next->nb == highest)
-		rra(stack);
+		rra(stack, false);
 	if ((*stack)->nb > (*stack)->next->nb)
-		sa(stack);
+		sa(stack, false);
+}
+
+void	sort_five(t_stack **a, t_stack **b)
+{
+	while (ft_stack_size(*a) > 3)
+	{
+		init_nodes(*a, *b);
+		finish_rotation(a, find_smallest(*a), 'a');
+		pb(a, b, false);
+	}
 }

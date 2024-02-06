@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:54:07 by vmondor           #+#    #+#             */
-/*   Updated: 2024/01/28 23:34:10 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/02 17:48:43 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,24 @@ static void	rotate(t_stack **stack)
 	last->next = temp;
 }
 
-void	ra(t_stack **stack_a)
+void	ra(t_stack **stack_a, bool checker)
 {
 	rotate(stack_a);
-	ft_putstr("ra\n");
+	if (!checker)
+		ft_putstr("ra\n");
 }
 
-void	rb(t_stack **stack_b)
+void	rb(t_stack **stack_b, bool checker)
 {
 	rotate(stack_b);
-	ft_putstr("rb\n");
+	if (!checker)
+		ft_putstr("rb\n");
 }
 
-void	rr(t_stack **stack_a, t_stack **stack_b)
+void	rr(t_stack **stack_a, t_stack **stack_b, bool checker)
 {
 	rotate(stack_a);
 	rotate(stack_b);
-	ft_putstr("rr\n");
+	if (!checker)
+		ft_putstr("rr\n");
 }

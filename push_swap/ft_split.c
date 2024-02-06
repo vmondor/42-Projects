@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:45:43 by vmondor           #+#    #+#             */
-/*   Updated: 2024/01/29 15:12:00 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/03 14:12:19 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	ft_nb_words(char *str, char c)
 	return (count);
 }
 
-static int	ft_allocate(char const *s, char c)
+static int	ft_allocate(char *s, char c)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:18:20 by vmondor           #+#    #+#             */
-/*   Updated: 2024/01/30 15:14:59 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/03 14:17:57 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ t_stack	*stack_init_split(char **av)
 	while (av[i])
 	{
 		nb = ft_atoi(av[i]);
+		free(av[i]);
 		if (i == 0)
 			stack_a = ft_stack_new((int)nb);
 		else
 			ft_stackadd_back(&stack_a, ft_stack_new((int)nb));
 		i++;
 	}
+	free(av);
 	return (stack_a);
 }
 
