@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:13:28 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/02 22:12:04 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/07 20:29:14 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,12 @@ static int	have_duplicates(char **av)
 	int	i;
 	int	j;
 
+	if (!(*av) || !av[0])
+		return (0);
 	i = 1;
 	while (av[i])
 	{
-		j = 1;
+		j = 0;
 		while (av[j])
 		{
 			if (j != i && ft_strcmp(av[i], av[j]) == 0)

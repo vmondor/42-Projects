@@ -6,7 +6,7 @@
 #    By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 16:10:45 by vmondor           #+#    #+#              #
-#    Updated: 2024/02/06 15:02:04 by vmondor          ###   ########.fr        #
+#    Updated: 2024/02/07 19:38:55 by vmondor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	= push_swap
 BONUS	= checker
 
 CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -g3
 
 
 OBJ_PATH = obj/

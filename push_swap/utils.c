@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:25:52 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/02 22:11:49 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/07 20:31:14 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,18 @@ void	free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
-int	nb_abs(int nb)
+void	free_tab(char **tab)
 {
-	if (nb < 0)
-		return (nb * -1);
-	return (nb);
+	int		i;
+
+	i = 0;
+	if (!tab || !(tab[i]))
+		return ;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
 }
 
 void	ft_error(t_stack **stack_a, t_stack **stack_b)

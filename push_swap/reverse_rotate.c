@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:06:20 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/02 17:48:05 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/07 14:50:10 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static void	reverse_rotate(t_stack **stack)
 	t_stack	*last;
 	t_stack	*before_last;
 
+	if (*stack == NULL)
+		return ;
 	last = ft_stacklast(*stack);
 	before_last = ft_stack_beforelast(*stack);
 	temp = *stack;

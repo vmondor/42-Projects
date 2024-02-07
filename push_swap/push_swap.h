@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:41:21 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/06 15:42:14 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/07 19:09:04 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		is_correct_input(char **av, int i);
 int		ft_strcmp(const char *s1, const char *s2);
 
 /* Allouer la stack */
-t_stack	*stack_init_split(char **av);
+t_stack	*stack_init_split(char **tab);
 t_stack	*stack_init(int ac, char **av);
 
 /* Trier */
@@ -91,12 +91,12 @@ int		ft_stack_size(t_stack *stack);
 /* Utils */
 void	ft_putstr(char *str);
 void	free_stack(t_stack **stack);
-int		nb_abs(int nb);
 
 /* Algorythm */
 void	finish_rotation(t_stack **stack, t_stack *head, char stack_name);
 
 /* error */
+void	free_tab(char **tab);
 void	ft_error(t_stack **stack_a, t_stack **stack_b);
 
 #endif

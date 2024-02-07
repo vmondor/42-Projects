@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:54:07 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/02 17:48:43 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/07 14:49:48 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	rotate(t_stack **stack)
 	t_stack	*temp;
 	t_stack	*last;
 
+	if (*stack == NULL)
+		return ;
 	last = ft_stacklast(*stack);
 	temp = *stack;
 	*stack = (*stack)->next;
