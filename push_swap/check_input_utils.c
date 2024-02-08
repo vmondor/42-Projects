@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:57:24 by vmondor           #+#    #+#             */
-/*   Updated: 2024/01/30 17:53:56 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/08 14:40:09 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ long	ft_atol(char *str)
 	{
 		nb = (nb * 10) + (str[i] - '0');
 		i++;
+		if (nb > INT_MAX || nb < INT_MIN)
+			ft_error(NULL, NULL);
 	}
 	return (nb * neg);
 }
