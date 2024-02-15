@@ -53,7 +53,8 @@ bonus : mlx_string_put() :afficher sur 1 ecran le nb de mouvement
 
 
 
-// convert xpm/herbe.xpm -scale 1500x1500 xpm/herbe1500.xpm
+// convert xpm/herbe.xpm -scale 100x100 xpm/herbe100.xpm
+// convert xpm/herbe.xpm -resize 100x100 xpm/herbe100.xpm
 
 mlx_get_screen_size : Si la map depasse mon ecran, je retourne false;
 

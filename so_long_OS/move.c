@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:35:23 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/13 19:15:24 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/15 16:08:25 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,118 +14,186 @@
 
 void	move_up(t_data *data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (data->map[i])
-	{
-		j = 0;
-		while (data->map[i][j])
-		{
-			if (data->map[i][j] == 'P' && data->map[i - 1][j] != '1')
-			{
-				data->map[i - 1][j] = 'P';
-				mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
-					j * TILE_SIZE, (i - 1) * TILE_SIZE);
-				data->map[i][j] = '0';
-				mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
-					j * TILE_SIZE, i * TILE_SIZE);
-				data->count++;
-				ft_printf("%d\n", data->count);
-				return ;
-			}
-			j++;
-		}
-		i++;
-	}
+    if ((data->map[data->i][data->j] == 'P' || data->map[data->i][data->j] == 'E') && data->map[data->i - 1][data->j] != '1')
+    {
+        if (data->map[data->i][data->j] == 'E')
+        {
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_e,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
+                data->j * TILE_SIZE, (data->i - 1) * TILE_SIZE);
+            data->map[data->i - 1][data->j] = 'P';
+            data->count++;
+            ft_printf("%d\n", data->count);
+            data->i--;
+            return ;
+        }
+        else if (data->map[data->i - 1][data->j] == 'E')
+        {
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
+                data->j * TILE_SIZE, (data->i - 1) * TILE_SIZE);
+            data->map[data->i][data->j] = '0';
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            data->count++;
+            ft_printf("%d\n", data->count);
+            data->i--;
+            return ;
+        }
+        else if (data->map[data->i - 1][data->j] != 'E')
+        {
+            data->map[data->i - 1][data->j] = 'P';
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
+                data->j * TILE_SIZE, (data->i - 1) * TILE_SIZE);
+            data->map[data->i][data->j] = '0';
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            data->count++;
+            ft_printf("%d\n", data->count);
+            data->i--;
+            return ;
+        }
+    }
 }
 
 void	move_down(t_data *data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (data->map[i])
-	{
-		j = 0;
-		while (data->map[i][j])
-		{
-			if (data->map[i][j] == 'P' && data->map[i + 1][j] != '1')
-			{
-				data->map[i + 1][j] = 'P';
-				mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
-					j * TILE_SIZE, (i + 1) * TILE_SIZE);
-				data->map[i][j] = '0';
-				mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
-					j * TILE_SIZE, i * TILE_SIZE);
-				data->count++;
-				ft_printf("%d\n", data->count);
-				return ;
-			}
-			j++;
-		}
-		i++;
-	}
+    if ((data->map[data->i][data->j] == 'P'  || data->map[data->i][data->j] == 'E') && data->map[data->i + 1][data->j] != '1')
+    {
+        if (data->map[data->i][data->j] == 'E')
+        {
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_e,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
+                data->j * TILE_SIZE, (data->i + 1) * TILE_SIZE);
+            data->map[data->i + 1][data->j] = 'P';
+            data->count++;
+            ft_printf("%d\n", data->count);
+            data->i++;
+            return ;
+        }
+        else if (data->map[data->i + 1][data->j] == 'E')
+        {
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
+                data->j * TILE_SIZE, (data->i + 1) * TILE_SIZE);
+            data->map[data->i][data->j] = '0';
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            data->count++;
+            ft_printf("%d\n", data->count);
+            data->i++;
+            return ;
+        }
+        else if (data->map[data->i + 1][data->j] != 'E')
+        {
+            data->map[data->i + 1][data->j] = 'P';
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
+                data->j * TILE_SIZE, (data->i + 1) * TILE_SIZE);
+            data->map[data->i][data->j] = '0';
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            data->count++;
+            ft_printf("%d\n", data->count);
+            data->i++;
+            return ;
+        }
+    }
 }
 
 void	move_left(t_data *data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (data->map[i])
-	{
-		j = 0;
-		while (data->map[i][j])
-		{
-			if (data->map[i][j] == 'P' && data->map[i][j - 1] != '1')
-			{
-				data->map[i][j - 1] = 'P';
-				mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
-					(j - 1) * TILE_SIZE, i * TILE_SIZE);
-				data->map[i][j] = '0';
-				mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
-					j * TILE_SIZE, i * TILE_SIZE);
-				data->count++;
-				ft_printf("%d\n", data->count);
-				return ;
-			}
-			j++;
-		}
-		i++;
-	}
+    if ((data->map[data->i][data->j] == 'P'  || data->map[data->i][data->j] == 'E') && data->map[data->i][data->j - 1] != '1')
+    {
+        if (data->map[data->i][data->j] == 'E')
+        {
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_e,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
+                (data->j - 1) * TILE_SIZE, data->i * TILE_SIZE);
+            data->map[data->i][data->j - 1] = 'P';
+            data->count++;
+            ft_printf("%d\n", data->count);
+            data->j--;
+            return ;
+        }
+        else if (data->map[data->i][data->j - 1] == 'E')
+        {
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
+                (data->j - 1) * TILE_SIZE, data->i * TILE_SIZE);
+            data->map[data->i][data->j] = '0';
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            data->count++;
+            ft_printf("%d\n", data->count);
+            data->j--;
+            return ;
+        }
+        else if (data->map[data->i][data->j - 1] != 'E')
+        {
+            data->map[data->i][data->j - 1] = 'P';
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
+                (data->j - 1) * TILE_SIZE, data->i * TILE_SIZE);
+            data->map[data->i][data->j] = '0';
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            data->count++;
+            ft_printf("%d\n", data->count);
+            data->j--;
+            return ;
+        }
+    }
 }
 
 void	move_right(t_data *data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (data->map[i])
-	{
-		j = 0;
-		while (data->map[i][j])
-		{
-			if (data->map[i][j] == 'P' && data->map[i][j + 1] != '1')
-			{
-				data->map[i][j + 1] = 'P';
-				mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
-					(j + 1) * TILE_SIZE, i * TILE_SIZE);
-				data->map[i][j] = '0';
-				mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
-					j * TILE_SIZE, i * TILE_SIZE);
-				data->count++;
-				ft_printf("%d\n", data->count);
-				return ;
-			}
-			j++;
-		}
-		i++;
-	}
+    if ((data->map[data->i][data->j] == 'P'  || data->map[data->i][data->j] == 'E') && data->map[data->i][data->j + 1] != '1')
+    {
+        if (data->map[data->i][data->j] == 'E')
+        {
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_e,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
+                (data->j + 1) * TILE_SIZE, data->i * TILE_SIZE);
+            data->map[data->i][data->j + 1] = 'P';
+            data->count++;
+            ft_printf("%d\n", data->count);
+            data->j++;
+            return ;
+        }
+        else if (data->map[data->i][data->j + 1] == 'E')
+        {
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
+                (data->j + 1) * TILE_SIZE, data->i * TILE_SIZE);
+            data->map[data->i][data->j] = '0';
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            data->count++;
+            ft_printf("%d\n", data->count);
+            data->j++;
+            return ;
+        }
+        else if (data->map[data->i][data->j + 1] != 'E')
+        {
+            data->map[data->i][data->j + 1] = 'P';
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
+                (data->j + 1) * TILE_SIZE, data->i * TILE_SIZE);
+            data->map[data->i][data->j] = '0';
+            mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+                data->j * TILE_SIZE, data->i * TILE_SIZE);
+            data->count++;
+            ft_printf("%d\n", data->count);
+            data->j++;
+            return ;
+        }
+    }
 }
 
 void	move_player(t_data *data, int keycode)

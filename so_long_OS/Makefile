@@ -6,7 +6,7 @@
 #    By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 16:10:45 by vmondor           #+#    #+#              #
-#    Updated: 2024/02/15 12:49:32 by vmondor          ###   ########.fr        #
+#    Updated: 2024/02/15 14:36:53 by vmondor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,8 @@ SRC_FILES		=	main.c					\
 					close.c					\
 					init_map.c				\
 					move.c					\
+					move_utils.c			\
+					check_exit.c			\
 					# so_long_utils.c			\
 
 OBJ_FILES		= $(SRC_FILES:.c=.o)
