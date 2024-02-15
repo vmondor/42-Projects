@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:12:13 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/15 18:09:13 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/15 18:21:23 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ int	ft_event_key(int keycode, t_data *data)
 		close_window(data);
 	if (keycode == KEY_UP || keycode == KEY_DOWN
 		|| keycode == KEY_RIGHT || keycode == KEY_LEFT)
+        {
             move_player(data, keycode);
+            if (data->map[data->i][data->j] == 'E' && get_collectible(data->map) == 0)
+                data->game_won = 1;
+        }
 	return (0);
 }
 
