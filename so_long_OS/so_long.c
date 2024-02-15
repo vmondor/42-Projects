@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:12:13 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/15 18:21:23 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/15 22:11:49 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	ft_event_key(int keycode, t_data *data)
 		close_window(data);
 	if (keycode == KEY_UP || keycode == KEY_DOWN
 		|| keycode == KEY_RIGHT || keycode == KEY_LEFT)
-        {
-            move_player(data, keycode);
-            if (data->map[data->i][data->j] == 'E' && get_collectible(data->map) == 0)
-                data->game_won = 1;
-        }
+	{
+		move_player(data, keycode);
+		if (get_collectible(data->map) == 0)
+			data->game_won = 1;
+	}
 	return (0);
 }
 
@@ -31,7 +31,7 @@ int	so_long(char **map)
 	t_data	data;
 
 	data.count = 0;
-    data.game_won = 0;
+	data.game_won = 0;
 	data.map = get_map(map);
 	free_tab(map);
 	data.mlx = mlx_init();
@@ -43,14 +43,14 @@ int	so_long(char **map)
 		return (free(data.mlx), 1);
 	init_map(&data);
 	mlx_string_put(data.mlx, data.win, 50, 50, 0x90EE90, "Coup : ");
-    get_player(&data);
+	get_player(&data);
 	mlx_key_hook(data.win, ft_event_key, &data);
 	// mlx_hook(data.win, DestroyNotify, StructureNotifyMask,
 	// 	&close_window, &data);
-    /*********** OS ***********/
-    mlx_hook(data.win, 17, 0,
+	/*********** OS ***********/
+	mlx_hook(data.win, 17, 0,
 		&close_window, &data);
-        /*******OS *******/
+		/*******OS *******/
 	mlx_loop(data.mlx);
 	return (1);
 }

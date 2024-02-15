@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:12:03 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/15 17:16:55 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/15 22:13:29 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ typedef struct s_data
 	void	*win;
 	char	**map;
 	int		count;
-    int     i;
-    int     j;
-    int     game_won;
+	int		i;
+	int		j;
+	int		game_won;
 	t_img	img;
 }				t_data;
 
@@ -97,10 +97,14 @@ int		close_window(t_data *data);
 void	init_map(t_data *data);
 // char	*ft_putnbr(int nbr);
 
+/* MOVE_UTILS*/
+void	get_player(t_data *data);
+void	move_from_e(t_data *data, int i, int j);
+void	move_towards_e(t_data *data, int i, int j);
+void	move_towards_other(t_data *data, int i, int j);
+
 /* GAME */
 void	move_player(t_data *data, int keycode);
-void	get_player(t_data *data);
-void    check_exit(t_data *data);
-
+void	check_exit(t_data *data);
 
 #endif

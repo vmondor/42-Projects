@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 13:32:43 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/15 18:06:04 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/15 22:13:42 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,5 @@
 void	check_exit(t_data *data)
 {
 	if (data->game_won == 1)
-    {
-        data->count--;
 		close_window(data);
-    }
 }
