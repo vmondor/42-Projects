@@ -1,0 +1,62 @@
+if (all_collectables_collected && exit_count == 1)
+	return map_valid;
+if (on_wall)
+	return map_invalid;
+if (on_collectable)
+	collectables++;
+if (on_exit)
+	exits++;
+replace_current_position_with_wall;
+if (one_of_the_four_adjacent_directions_is_possible)
+	return map_valid;
+return map_invalid;
+
+
+main		:
+
+1) checker les erreurs, gerer les leaks
+	-	erreurs nb arg 
+	-	verifier l'extension .ber
+	-	ouverture de fichier lecture de map; gnl(), open(), close()
+	-	si la map est rectangle
+	-	si les caracteres sont correctes
+	-	que des murs autour
+	
+	-	malloc structure game
+	-	mlx_init()
+	-	que toutes les xpm soient ok mlx_new_window(), mlx_xpm_file_to_image()
+
+	en fonction des besoins exit() ->
+	-	window : mlx_destroy_window()
+	-	mlx : mlx_destroy_display() + free()
+	-	sprites : mlx_destroy_image()
+
+	free();
+
+2) Initialisation structure
+	- a NULL 0 ou la mlx_init()
+
+3) render
+	- analyser la map et afficher en fonction de 1 element mix_put_image_to_window()
+
+4) interactions avec le clavier
+	-	mlx_key_hook(), choisir une fonction a implementer ex : ft_event_key()
+
+Inserer le code pour :
+	- autorisation avancer le personnage ou pas, et action si ok
+
+bonus : mlx_string_put() :afficher sur 1 ecran le nb de mouvement
+
+5) apparaitre les images en boucle
+	-	mlx_hook(), permet d'inserer une fonction pour fermer avec la croix.
+	-	mlx_loop();
+
+
+
+// convert xpm/herbe.xpm -scale 1500x1500 xpm/herbe1500.xpm
+
+mlx_get_screen_size : Si la map depasse mon ecran, je retourne false;
+
+Proteger la mlx :
+if (!mlx)
+	return (NULL);
