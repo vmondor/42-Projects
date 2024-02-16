@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:12:13 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/15 22:11:49 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/16 11:24:30 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int	so_long(char **map)
 	init_map(&data);
 	mlx_string_put(data.mlx, data.win, 50, 50, 0x90EE90, "Coup : ");
 	get_player(&data);
-	mlx_key_hook(data.win, ft_event_key, &data);
+	mlx_hook(data.win, 2, 1L << 0, ft_event_key, &data);
+	// mlx_hook(win, KeyPress, KeyPressMask, key_press, &data);
 	// mlx_hook(data.win, DestroyNotify, StructureNotifyMask,
 	// 	&close_window, &data);
 	/*********** OS ***********/
