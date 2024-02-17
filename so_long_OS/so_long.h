@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:12:03 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/16 11:18:06 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/17 12:26:33 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_img
 	void	*img_e;
 	void	*img_c;
 	void	*img_1;
+	void	*img_z;
 	int		img_width;
 	int		img_height;
 }				t_img;
@@ -100,8 +101,7 @@ void	init_map(t_data *data);
 /* MOVE_UTILS*/
 void	get_player(t_data *data);
 void	move_from_e(t_data *data, int i, int j);
-void	move_towards_e(t_data *data, int i, int j);
-void	move_towards_other(t_data *data, int i, int j);
+void	move_from_other(t_data *data, int i, int j);
 
 /* GAME */
 void	move_player(t_data *data, int keycode);

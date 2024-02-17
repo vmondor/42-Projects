@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:28:44 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/16 11:18:19 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/17 12:42:06 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	move_from_e(t_data *data, int i, int j)
 		data->j * TILE_SIZE, data->i * TILE_SIZE);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_e,
 		data->j * TILE_SIZE, data->i * TILE_SIZE);
+    mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+		j * TILE_SIZE, i * TILE_SIZE);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
 		j * TILE_SIZE, i * TILE_SIZE);
-	data->map[i][j] = 'P';
-	check_exit(data);
 	data->count++;
 	ft_printf("%d\n", data->count);
 	data->i = i;
@@ -45,28 +45,13 @@ void	move_from_e(t_data *data, int i, int j)
 	return ;
 }
 
-void	move_towards_e(t_data *data, int i, int j)
+void	move_from_other(t_data *data, int i, int j)
 {
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
 		j * TILE_SIZE, i * TILE_SIZE);
-	data->map[data->i][data->j] = '0';
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
 		data->j * TILE_SIZE, data->i * TILE_SIZE);
-	data->count++;
-	ft_printf("%d\n", data->count);
-	data->i = i;
-	data->j = j;
-	return ;
-}
-
-void	move_towards_other(t_data *data, int i, int j)
-{
-	data->map[i][j] = 'P';
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
-		j * TILE_SIZE, i * TILE_SIZE);
 	data->map[data->i][data->j] = '0';
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
-		data->j * TILE_SIZE, data->i * TILE_SIZE);
 	data->count++;
 	ft_printf("%d\n", data->count);
 	data->i = i;

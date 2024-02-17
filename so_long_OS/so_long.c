@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:12:13 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/16 11:24:30 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/17 12:51:39 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ int	ft_event_key(int keycode, t_data *data)
 	if (keycode == KEY_UP || keycode == KEY_DOWN
 		|| keycode == KEY_RIGHT || keycode == KEY_LEFT)
 	{
+		if (data->map[data->i][data->j] == 'E')
+			check_exit(data);
 		move_player(data, keycode);
 		if (get_collectible(data->map) == 0)
 			data->game_won = 1;
 	}
+
 	return (0);
 }
 
@@ -42,7 +45,6 @@ int	so_long(char **map)
 	if (!data.win)
 		return (free(data.mlx), 1);
 	init_map(&data);
-	mlx_string_put(data.mlx, data.win, 50, 50, 0x90EE90, "Coup : ");
 	get_player(&data);
 	mlx_hook(data.win, 2, 1L << 0, ft_event_key, &data);
 	// mlx_hook(win, KeyPress, KeyPressMask, key_press, &data);
