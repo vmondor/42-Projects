@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:31:14 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/16 12:45:47 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/18 20:06:32 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ static void	set_items(t_bonus *data)
 		i++;
 	}
 }
-static void set_enemy(t_bonus *data)
+
+static void	set_enemy(t_bonus *data)
 {
 	int	i;
 	int	j;
@@ -81,6 +82,7 @@ static void set_enemy(t_bonus *data)
 		i++;
 	}
 }
+
 void	init_map_bonus(t_bonus *data)
 {
 	data->img.img_0 = mlx_xpm_file_to_image(data->mlx, "./xpm/herbe100.xpm",

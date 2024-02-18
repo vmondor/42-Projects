@@ -6,62 +6,70 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:51:59 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/17 20:32:03 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/18 20:10:09 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void    get_pos_enemy(t_bonus *data)
+void	move_enemy(t_bonus *data)
 {
-    data->enemy_i = 0;
-    while (data->map[data->enemy_i])
-    {
-        data->enemy_j = 0;
-        while (data->map[data->enemy_i][data->enemy_j])
-        {
-            if (data->map[data->enemy_i][data->enemy_j] == 'Z')
-                return ;
-            data->enemy_j++;
-        }
-        data->enemy_i++;
-    }
+	if (data->enemy_direction == 0
+		&& data->map[data->enemy_i - 1][data->enemy_j] != '1')
+		move_enemy_up(data);
+	else if (data->enemy_direction == 0
+		&& data->map[data->enemy_i - 1][data->enemy_j] == '1')
+		data->enemy_direction = -1;
+	if (data->enemy_direction == -1
+		&& data->map[data->enemy_i + 1][data->enemy_j] != '1')
+		move_enemy_down(data);
+	else if (data->enemy_direction == -1
+		&& data->map[data->enemy_i + 1][data->enemy_j] == '1')
+		data->enemy_direction = 1;
+	if (data->enemy_direction == 1
+		&& data->map[data->enemy_i][data->enemy_j - 1] != '1')
+		move_enemy_left(data);
+	else if (data->enemy_direction == 1
+		&& data->map[data->enemy_i][data->enemy_j - 1] == '1')
+		data->enemy_direction = 2;
+	if (data->enemy_direction == 2
+		&& data->map[data->enemy_i][data->enemy_j + 1] != '1')
+		move_enemy_right(data);
+	else if (data->enemy_direction == 2
+		&& data->map[data->enemy_i][data->enemy_j + 1] == '1')
+		data->enemy_direction = 0;
 }
 
-void    move_enemy(t_bonus *data)
-{   
-    while (data->map[data->enemy_i][data->enemy_j + 1] != '1')
-    {
-        if (data->map[data->enemy_i][data->enemy_j] == 'E')
-        {
-            mlx_put_image_to_window(data->mlx, data->win, data->img.img_z,
-                (data->enemy_j + 1) * TILE_SIZE, data->enemy_i * TILE_SIZE);
-            mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
-                data->enemy_j * TILE_SIZE, data->enemy_i * TILE_SIZE);
-            mlx_put_image_to_window(data->mlx, data->win, data->img.img_e,
-                data->enemy_j * TILE_SIZE, data->enemy_i * TILE_SIZE);
-            data->enemy_j += 1;
-            return ;
-        }
-        else if (data->map[data->enemy_i][data->enemy_j] == 'C')
-        {
-            mlx_put_image_to_window(data->mlx, data->win, data->img.img_z,
-                (data->enemy_j + 1) * TILE_SIZE, data->enemy_i * TILE_SIZE);
-            mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
-                data->enemy_j * TILE_SIZE, data->enemy_i * TILE_SIZE);
-            mlx_put_image_to_window(data->mlx, data->win, data->img.img_c,
-                data->enemy_j * TILE_SIZE, data->enemy_i * TILE_SIZE);
-            data->enemy_j += 1;
-            return ;
-        }
-        else
-        {
-            mlx_put_image_to_window(data->mlx, data->win, data->img.img_z,
-                (data->enemy_j + 1) * TILE_SIZE, data->enemy_i * TILE_SIZE);
-            mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
-                data->enemy_j * TILE_SIZE, data->enemy_i * TILE_SIZE);
-            data->enemy_j += 1;
-            return ;
-        }
-    }
+void	move_enemy_from_e(t_bonus *data, int i, int j)
+{
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img_z,
+		j * TILE_SIZE, i * TILE_SIZE);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+		data->enemy_j * TILE_SIZE, data->enemy_i * TILE_SIZE);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img_e,
+		data->enemy_j * TILE_SIZE, data->enemy_i * TILE_SIZE);
+	data->enemy_i = i;
+	data->enemy_j = j;
+}
+
+void	move_enemy_from_c(t_bonus *data, int i, int j)
+{
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img_z,
+		j * TILE_SIZE, i * TILE_SIZE);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+		data->enemy_j * TILE_SIZE, data->enemy_i * TILE_SIZE);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img_c,
+		data->enemy_j * TILE_SIZE, data->enemy_i * TILE_SIZE);
+	data->enemy_i = i;
+	data->enemy_j = j;
+}
+
+void	move_enemy_from_other(t_bonus *data, int i, int j)
+{
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img_z,
+		j * TILE_SIZE, i * TILE_SIZE);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
+		data->enemy_j * TILE_SIZE, data->enemy_i * TILE_SIZE);
+		data->enemy_i = i;
+		data->enemy_j = j;
 }

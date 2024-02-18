@@ -6,11 +6,11 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:35:06 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/17 13:53:11 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/18 17:26:37 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../get_next_line.h"
+#include "../src/get_next_line.h"
 
 static int	ft_strlen(char *s)
 {

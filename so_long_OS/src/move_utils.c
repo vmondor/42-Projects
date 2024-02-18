@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 14:28:44 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/18 20:10:53 by vmondor          ###   ########.fr       */
+/*   Created: 2024/02/18 13:37:51 by vmondor           #+#    #+#             */
+/*   Updated: 2024/02/18 13:43:50 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "so_long.h"
 
-void	get_player(t_bonus *data)
+void	get_player(t_data *data)
 {
 	data->i = 0;
 	while (data->map[data->i])
@@ -28,7 +28,7 @@ void	get_player(t_bonus *data)
 	}
 }
 
-void	move_from_e(t_bonus *data, int i, int j)
+void	move_from_e(t_data *data, int i, int j)
 {
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
 		data->j * TILE_SIZE, data->i * TILE_SIZE);
@@ -45,7 +45,7 @@ void	move_from_e(t_bonus *data, int i, int j)
 	return ;
 }
 
-void	move_from_other(t_bonus *data, int i, int j)
+void	move_from_other(t_data *data, int i, int j)
 {
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_p,
 		j * TILE_SIZE, i * TILE_SIZE);

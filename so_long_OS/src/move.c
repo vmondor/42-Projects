@@ -6,13 +6,13 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:35:23 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/18 23:44:09 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/18 13:42:57 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "so_long.h"
 
-void	move_up(t_bonus *data)
+void	move_up(t_data *data)
 {
 	if (data->map[data->i - 1][data->j] != '1')
 	{
@@ -23,7 +23,7 @@ void	move_up(t_bonus *data)
 	}
 }
 
-void	move_down(t_bonus *data)
+void	move_down(t_data *data)
 {
 	if (data->map[data->i + 1][data->j] != '1')
 	{
@@ -34,7 +34,7 @@ void	move_down(t_bonus *data)
 	}
 }
 
-void	move_left(t_bonus *data)
+void	move_left(t_data *data)
 {
 	if (data->map[data->i][data->j - 1] != '1')
 	{
@@ -45,7 +45,7 @@ void	move_left(t_bonus *data)
 	}
 }
 
-void	move_right(t_bonus *data)
+void	move_right(t_data *data)
 {
 	if (data->map[data->i][data->j + 1] != '1')
 	{
@@ -56,16 +56,14 @@ void	move_right(t_bonus *data)
 	}
 }
 
-void	move_player(t_bonus *data, int keycode)
+void	move_player(t_data *data, int keycode)
 {
-	data->prev_i = data->i;
-	data->prev_j = data->j;
 	if (keycode == KEY_UP)
-		move_up(data);
-	else if (keycode == KEY_DOWN)
-		move_down(data);
-	else if (keycode == KEY_LEFT)
-		move_left(data);
-	else if (keycode == KEY_RIGHT)
-		move_right(data);
+		return (move_up(data));
+	if (keycode == KEY_DOWN)
+		return (move_down(data));
+	if (keycode == KEY_LEFT)
+		return (move_left(data));
+	if (keycode == KEY_RIGHT)
+		return (move_right(data));
 }

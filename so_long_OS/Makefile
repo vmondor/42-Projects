@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/17 16:10:45 by vmondor           #+#    #+#              #
-#    Updated: 2024/02/17 13:52:36 by vmondor          ###   ########.fr        #
+#    Created: 2024/02/06 16:28:19 by vmondor           #+#    #+#              #
+#    Updated: 2024/02/18 23:07:53 by vmondor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,13 @@ MLX_FLAGS		= -Lmlx -lmlx -framework OpenGL -framework Appkit
 LIBFTPRINTF_DIR	= libft/ft_printf
 LIBFTPRINTF		= $(LIBFTPRINTF_DIR)/libftprintf.a
 CFLAGS			= -Wall -Werror -Wextra -g3
-HEADERS			= so_long.h
+HEADERS			= $(SRC_PATH)so_long.h
 
 
-SRC_PATH		= ./
+SRC_PATH		= src/
+OBJ_PATH		= src/obj/
+
 SRC_PATH_BONUS	= bonus/
-OBJ_PATH		= obj/
 OBJ_PATH_BONUS	= bonus/obj/
 
 SRC_FILES		=	main.c					\
@@ -59,6 +60,10 @@ SRC_FILES_BONUS	=	so_long_bonus.c			\
 					move_utils.c			\
 					check_exit.c			\
 					move_enemy.c			\
+					move_enemy_utils.c		\
+					ft_itoa.c				\
+					lose.c					\
+					enemy.c					\
 
 OBJ_FILES		= $(SRC_FILES:.c=.o)
 OBJS			= $(addprefix $(OBJ_PATH), $(OBJ_FILES))
@@ -68,7 +73,7 @@ OBJS_BONUS		= $(addprefix $(OBJ_PATH_BONUS), $(OBJ_FILES_BONUS))
 all: $(OBJ_PATH) ${NAME}
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS)
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -O3 -c $< -o $@
 
 $(OBJ_PATH):
 	mkdir $(OBJ_PATH)
