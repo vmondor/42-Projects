@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 11:47:33 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/18 20:32:16 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/19 00:09:54 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static int	ft_event_key(int keycode, t_bonus *data)
 		get_prev_enemy(data);
 		move_enemy(data);
 		check_enemy_behind(data);
+        teleport_enemy(data);
 		if (get_collectible(data->map) == 0)
 			data->game_won = 1;
 	}
@@ -61,7 +62,8 @@ static int	so_long_bonus(char **map)
 {
 	t_bonus	data;
 
-	init_prev_value(&data);
+	init_value(&data);
+    data.collect = get_collectible(map);
 	data.map = get_map(map);
 	free_tab(map);
 	data.mlx = mlx_init();

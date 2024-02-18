@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 20:09:56 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/18 20:34:12 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/19 00:09:02 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	check_enemy_behind(t_bonus *data)
 	check_player_behind(data);
 }
 
-void	init_prev_value(t_bonus *data)
+void	init_value(t_bonus *data)
 {
 	data->count = 0;
 	data->prev_i = 0;

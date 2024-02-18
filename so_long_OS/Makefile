@@ -6,7 +6,7 @@
 #    By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 16:28:19 by vmondor           #+#    #+#              #
-#    Updated: 2024/02/18 23:07:53 by vmondor          ###   ########.fr        #
+#    Updated: 2024/02/19 00:03:16 by vmondor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ SRC_FILES_BONUS	=	so_long_bonus.c			\
 					ft_itoa.c				\
 					lose.c					\
 					enemy.c					\
+					teleport_enemy.c		\
 
 OBJ_FILES		= $(SRC_FILES:.c=.o)
 OBJS			= $(addprefix $(OBJ_PATH), $(OBJ_FILES))

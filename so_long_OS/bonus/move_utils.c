@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:28:44 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/18 20:10:53 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/19 00:19:17 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	move_from_other(t_bonus *data, int i, int j)
 		j * TILE_SIZE, i * TILE_SIZE);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_0,
 		data->j * TILE_SIZE, data->i * TILE_SIZE);
+    if (data->map[data->i][data->j] == 'C')
+        data->collect--;
 	data->map[data->i][data->j] = '0';
 	data->count++;
 	ft_printf("%d\n", data->count);

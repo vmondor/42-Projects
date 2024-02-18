@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:02:46 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/18 23:47:45 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/19 00:07:13 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_bonus
 	int		enemy_i;
 	int		enemy_j;
 	int		enemy_direction;
+	int		collect;
 	t_img	img;
 }				t_bonus;
 
@@ -101,7 +102,7 @@ int		close_window(t_bonus *data);
 
 /* SO_LONG */
 void	init_map(t_bonus *data);
-void	init_prev_value(t_bonus *data);
+void	init_value(t_bonus *data);
 
 /* MOVE_UTILS*/
 void	get_player(t_bonus *data);
@@ -124,6 +125,7 @@ void	move_enemy_from_other(t_bonus *data, int i, int j);
 /* GAME */
 void	move_player(t_bonus *data, int keycode);
 void	check_exit(t_bonus *data);
+void    teleport_enemy(t_bonus *data);
 void	lose(t_bonus *data);
 
 int		more_items_enemy(char **tab);
