@@ -6,11 +6,12 @@
 #    By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 16:10:45 by vmondor           #+#    #+#              #
-#    Updated: 2024/02/15 14:36:53 by vmondor          ###   ########.fr        #
+#    Updated: 2024/02/17 13:52:36 by vmondor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= so_long
+BONUS			= so_long_bonus
 
 CC				= clang
 INCLUDES		= -I/usr/include -Imlx
@@ -21,8 +22,10 @@ CFLAGS			= -Wall -Werror -Wextra -g3
 HEADERS			= so_long.h
 
 
-OBJ_PATH	= obj/
-SRC_PATH	= ./
+SRC_PATH		= ./
+SRC_PATH_BONUS	= bonus/
+OBJ_PATH		= obj/
+OBJ_PATH_BONUS	= bonus/obj/
 
 SRC_FILES		=	main.c					\
 					get_next_line_utils.c	\
@@ -39,10 +42,28 @@ SRC_FILES		=	main.c					\
 					move.c					\
 					move_utils.c			\
 					check_exit.c			\
-					# so_long_utils.c			\
+
+SRC_FILES_BONUS	=	so_long_bonus.c			\
+					get_next_line_utils.c	\
+					get_next_line.c			\
+					file_to_tab.c			\
+					utils.c					\
+					error.c					\
+					check_map_bonus.c		\
+					check_map_utils.c		\
+					check_map_utils_bonus.c	\
+					get_items.c				\
+					close.c					\
+					init_map_bonus.c		\
+					move.c					\
+					move_utils.c			\
+					check_exit.c			\
+					move_enemy.c			\
 
 OBJ_FILES		= $(SRC_FILES:.c=.o)
 OBJS			= $(addprefix $(OBJ_PATH), $(OBJ_FILES))
+OBJ_FILES_BONUS	= $(SRC_FILES_BONUS:.c=.o)
+OBJS_BONUS		= $(addprefix $(OBJ_PATH_BONUS), $(OBJ_FILES_BONUS))
 
 all: $(OBJ_PATH) ${NAME}
 
@@ -58,17 +79,25 @@ $(NAME): $(LIBFTPRINTF) $(OBJS)
 $(LIBFTPRINTF):
 	$(MAKE) -C $(LIBFTPRINTF_DIR)
 
-bonus : $(OBJ_PATH) ${BONUS}
+bonus : $(OBJ_PATH_BONUS) ${BONUS}
 
-# ${BONUS}: ${OBJS_BONUS}
-# 	${CC} ${CFLAGS} ${OBJS_BONUS} -o ${BONUS}
+$(OBJ_PATH_BONUS)%.o: $(SRC_PATH_BONUS)%.c $(HEADERS) bonus/so_long_bonus.h
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+
+$(OBJ_PATH_BONUS):
+	mkdir $(OBJ_PATH_BONUS)
+
+$(BONUS): $(LIBFTPRINTF) $(OBJS_BONUS)
+	$(CC) $(OBJS_BONUS) $(MLX_FLAGS) -o $(BONUS) -L$(LIBFTPRINTF_DIR) -lftprintf
 
 clean:
 	rm -rf $(OBJ_PATH)
+	rm -rf $(OBJ_PATH_BONUS)
 	$(MAKE) -C $(LIBFTPRINTF_DIR) clean
 
 fclean: clean
 	rm -f ${NAME}
+	rm -f ${BONUS}
 	$(MAKE) -C $(LIBFTPRINTF_DIR) fclean
 
 re: fclean all
