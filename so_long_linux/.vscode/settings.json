@@ -1,0 +1,33 @@
+{
+    "files.associations": {
+        "mlx.h": "c",
+        "so_long.h": "c",
+        "stdlib.h": "c",
+        "keysym.h": "c",
+        "get_next_line.h": "c",
+        "fcntl.h": "c",
+        "ft_printf.h": "c",
+        "unistd.h": "c",
+        "array": "c",
+        "*.tcc": "c",
+        "deque": "c",
+        "string": "c",
+        "unordered_map": "c",
+        "vector": "c",
+        "functional": "c",
+        "iterator": "c",
+        "memory_resource": "c",
+        "optional": "c",
+        "istream": "c",
+        "memory": "c",
+        "numeric": "c",
+        "ostream": "c",
+        "ranges": "c",
+        "sstream": "c",
+        "streambuf": "c",
+        "tuple": "c",
+        "utility": "c",
+        "algorithm": "c",
+        "so_long_bonus.h": "c"
+    }
+}
