@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:31:14 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/20 16:15:10 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/20 20:41:30 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ static void	set_images(t_bonus *data)
 			&data->img.img_width, &data->img.img_height);
 	if (!data->img.img_1)
 		close_window(data);
-	data->img.img_z = mlx_xpm_file_to_image(data->mlx, "./xpm/real100.xpm",
+	data->img.img_z = mlx_xpm_file_to_image(data->mlx, "./xpm/enemy100.xpm",
 			&data->img.img_width, &data->img.img_height);
 	if (!data->img.img_z)
 		close_window(data);
