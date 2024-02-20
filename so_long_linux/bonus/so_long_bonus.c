@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 11:47:33 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/19 11:33:29 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/20 16:42:01 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ static int	ft_event_key(int keycode, t_bonus *data)
 		|| keycode == KEY_RIGHT || keycode == KEY_LEFT)
 	{
 		lose(data);
-		if (data->map[data->i][data->j] == 'E')
-			check_exit(data);
 		move_player(data, keycode);
 		get_prev_enemy(data);
 		move_enemy(data);

@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:28:44 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/19 10:29:36 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/20 16:40:40 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	move_from_other(t_bonus *data, int i, int j)
 	data->map[data->i][data->j] = '0';
 	data->count++;
 	ft_printf("%d\n", data->count);
+	if (data->map[i][j] == 'E')
+		check_exit(data);
 	data->i = i;
 	data->j = j;
 	return ;

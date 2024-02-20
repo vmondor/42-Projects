@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:02:46 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/19 11:32:58 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/20 16:23:09 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_bonus
 	int		i;
 	int		j;
 	int		game_won;
+	int		game_lose;
 	int		prev_enemy_i;
 	int		prev_enemy_j;
 	int		enemy_i;

@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:31:14 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/19 11:42:02 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/20 16:15:10 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,20 +83,37 @@ static void	set_enemy(t_bonus *data)
 	}
 }
 
-void	init_map_bonus(t_bonus *data)
+static void	set_images(t_bonus *data)
 {
 	data->img.img_0 = mlx_xpm_file_to_image(data->mlx, "./xpm/herbe100.xpm",
 			&data->img.img_width, &data->img.img_height);
-	data->img.img_p = mlx_xpm_file_to_image(data->mlx, "./xpm/player100.xpm",
+	if (!data->img.img_0)
+		close_window(data);
+	data->img.img_p = mlx_xpm_file_to_image(data->mlx, "./xpm/psg100.xpm",
 			&data->img.img_width, &data->img.img_height);
+	if (!data->img.img_p)
+		close_window(data);
 	data->img.img_e = mlx_xpm_file_to_image(data->mlx, "./xpm/exit100.xpm",
 			&data->img.img_width, &data->img.img_height);
-	data->img.img_c = mlx_xpm_file_to_image(data->mlx, "./xpm/ballon100.xpm",
+	if (!data->img.img_e)
+		close_window(data);
+	data->img.img_c = mlx_xpm_file_to_image(data->mlx, "./xpm/om100.xpm",
 			&data->img.img_width, &data->img.img_height);
+	if (!data->img.img_c)
+		close_window(data);
 	data->img.img_1 = mlx_xpm_file_to_image(data->mlx, "./xpm/wall100.xpm",
 			&data->img.img_width, &data->img.img_height);
-	data->img.img_z = mlx_xpm_file_to_image(data->mlx, "./xpm/enemy100.xpm",
+	if (!data->img.img_1)
+		close_window(data);
+	data->img.img_z = mlx_xpm_file_to_image(data->mlx, "./xpm/real100.xpm",
 			&data->img.img_width, &data->img.img_height);
+	if (!data->img.img_z)
+		close_window(data);
+}
+
+void	init_map_bonus(t_bonus *data)
+{
+	set_images(data);
 	set_background(data);
 	set_items(data);
 	set_enemy(data);

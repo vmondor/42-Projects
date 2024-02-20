@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:31:14 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/19 11:41:48 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/20 17:11:34 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,58 @@ static void	set_items(t_data *data)
 	}
 }
 
+static void	init_value_img(t_img img)
+{
+	img.img_0 = 0;
+	img.img_p = 0;
+	img.img_e = 0;
+	img.img_c = 0;
+	img.img_1 = 0;
+}
+
+static int	error_img(t_data *data)
+{
+	free_tab(data->map);
+	if (data->img.img_0 != 0)
+		mlx_destroy_image(data->mlx, data->img.img_0);
+	if (data->img.img_p != 0)
+		mlx_destroy_image(data->mlx, data->img.img_p);
+	if (data->img.img_e != 0)
+		mlx_destroy_image(data->mlx, data->img.img_e);
+	if (data->img.img_c != 0)
+		mlx_destroy_image(data->mlx, data->img.img_c);
+	if (data->img.img_1 != 0)
+		mlx_destroy_image(data->mlx, data->img.img_1);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	exit(0);
+	return (0);
+}
+
 void	init_map(t_data *data)
 {
+	init_value_img(data->img);
 	data->img.img_0 = mlx_xpm_file_to_image(data->mlx, "./xpm/herbe100.xpm",
 			&data->img.img_width, &data->img.img_height);
-	data->img.img_p = mlx_xpm_file_to_image(data->mlx, "./xpm/player100.xpm",
+	if (data->img.img_0 == 0)
+		error_img(data);
+	data->img.img_p = mlx_xpm_file_to_image(data->mlx, "./xpm/psg100.xpm",
 			&data->img.img_width, &data->img.img_height);
+	if (data->img.img_p == 0)
+		error_img(data);
 	data->img.img_e = mlx_xpm_file_to_image(data->mlx, "./xpm/exit100.xpm",
 			&data->img.img_width, &data->img.img_height);
-	data->img.img_c = mlx_xpm_file_to_image(data->mlx, "./xpm/ballon100.xpm",
+	if (data->img.img_e == 0)
+		error_img(data);
+	data->img.img_c = mlx_xpm_file_to_image(data->mlx, "./xpm/om100.xpm",
 			&data->img.img_width, &data->img.img_height);
+	if (data->img.img_c == 0)
+		error_img(data);
 	data->img.img_1 = mlx_xpm_file_to_image(data->mlx, "./xpm/wall100.xpm",
 			&data->img.img_width, &data->img.img_height);
+	if (data->img.img_1 == 0)
+		error_img(data);
 	set_background(data);
 	set_items(data);
 }

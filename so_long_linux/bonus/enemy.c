@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 20:09:56 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/19 10:58:02 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/20 16:23:28 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	init_value(t_bonus *data)
 	data->i = 0;
 	data->j = 0;
 	data->game_won = 0;
+	data->game_lose = 0;
 	data->prev_enemy_i = 0;
 	data->prev_enemy_j = 0;
 	data->enemy_i = 0;
