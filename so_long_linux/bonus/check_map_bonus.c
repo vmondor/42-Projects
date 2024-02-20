@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:12:36 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/16 12:25:54 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/20 18:54:39 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,8 @@ static void	start_flood_fill(char **map_copy)
 
 static int	check_flood_fill(char **map)
 {
-	int		collect;
 	char	**map_copy;
 
-	collect = get_collectible(map);
 	map_copy = get_map(map);
 	if (!map_copy)
 		return (0);

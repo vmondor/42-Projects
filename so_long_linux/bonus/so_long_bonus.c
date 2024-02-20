@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 11:47:33 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/20 16:42:01 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/20 18:53:43 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ static int	so_long_bonus(char **map)
 int	main(int ac, char **av)
 {
 	char	**map;
-	int		i;
 
 	if (ac != 2)
 		error("Il doit y avoir 1 argument", NULL);
@@ -86,7 +85,6 @@ int	main(int ac, char **av)
 	if (!map)
 		return (1);
 	map_is_valid(map);
-	i = 0;
 	so_long_bonus(map);
 	return (1);
 }

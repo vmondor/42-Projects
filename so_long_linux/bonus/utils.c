@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:46:51 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/17 13:55:35 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/20 18:54:19 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 int	is_filename(char *filename)
 {
-	int	i;
 	int	linelen;
 
 	if (!filename)
 		return (0);
-	i = 0;
 	linelen = ft_linelen(filename);
 	if (linelen <= 4)
 		return (0);

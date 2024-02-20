@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:12:03 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/18 19:09:19 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/20 19:18:53 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int		so_long(char **map);
 int		close_window(t_data *data);
 
 /* SO_LONG */
+void	init_value(t_data *data);
 void	init_map(t_data *data);
 
 /* MOVE_UTILS*/

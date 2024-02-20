@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:35:15 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/19 16:21:10 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/20 18:54:01 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,7 @@ char	**content_file_to_tab(char *filename)
 	char	**tab;
 	int		tab_index;
 	int		count_line;
-	int		i;
 
-	i = 0;
 	count_line = ft_count_line(filename);
 	tab = malloc(sizeof(char *) * (count_line + 1));
 	if (!tab)

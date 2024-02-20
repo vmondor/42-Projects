@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:12:13 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/20 16:12:27 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/20 19:53:37 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int	so_long(char **map)
 {
 	t_data	data;
 
-	data.count = 0;
-	data.game_won = 0;
+	init_value(&data);
 	data.map = get_map(map);
 	free_tab(map);
 	data.mlx = mlx_init();

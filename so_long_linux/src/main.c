@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:54:22 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/18 14:51:31 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/20 18:20:44 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int ac, char **av)
 {
 	char	**map;
-	int		i;
 
 	if (ac != 2)
 		error("Il doit y avoir 1 argument", NULL);
@@ -25,7 +24,6 @@ int	main(int ac, char **av)
 	if (!map)
 		return (1);
 	map_is_valid(map);
-	i = 0;
 	if (so_long(map))
 		return (0);
 	return (1);
