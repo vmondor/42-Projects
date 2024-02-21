@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:35:15 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/20 18:54:01 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/21 10:53:08 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ static int	ft_count_line(char *filename)
 	nb_line = 0;
 	line = get_next_line(fd);
 	if (!line)
+	{
+		close(fd);
 		error("Dossier ou fichier vide entrer en parametre", NULL);
+	}
 	while (line)
 	{
 		nb_line++;

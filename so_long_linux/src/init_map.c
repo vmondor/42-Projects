@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:31:14 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/20 19:49:49 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/21 10:53:36 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,38 +75,49 @@ void	init_value(t_data *data)
 	data->img.img_width = TILE_SIZE;
 }
 
-// static int	error_img(t_data *data)
-// {
-// 	free_tab(data->map);
-// 	if (data->img.img_0 != 0)
-// 		mlx_destroy_image(data->mlx, data->img.img_0);
-// 	if (data->img.img_p != 0)
-// 		mlx_destroy_image(data->mlx, data->img.img_p);
-// 	if (data->img.img_e != 0)
-// 		mlx_destroy_image(data->mlx, data->img.img_e);
-// 	if (data->img.img_c != 0)
-// 		mlx_destroy_image(data->mlx, data->img.img_c);
-// 	if (data->img.img_1 != 0)
-// 		mlx_destroy_image(data->mlx, data->img.img_1);
-// 	mlx_destroy_window(data->mlx, data->win);
-// 	mlx_destroy_display(data->mlx);
-// 	free(data->mlx);
-// 	exit(0);
-// 	return (0);
-// }
+static int	error_img(t_data *data)
+{
+	ft_printf("Image not found\n");
+	free_tab(data->map);
+	if (data->img.img_0 != 0)
+		mlx_destroy_image(data->mlx, data->img.img_0);
+	if (data->img.img_p != 0)
+		mlx_destroy_image(data->mlx, data->img.img_p);
+	if (data->img.img_e != 0)
+		mlx_destroy_image(data->mlx, data->img.img_e);
+	if (data->img.img_c != 0)
+		mlx_destroy_image(data->mlx, data->img.img_c);
+	if (data->img.img_1 != 0)
+		mlx_destroy_image(data->mlx, data->img.img_1);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	exit(0);
+	return (0);
+}
 
 void	init_map(t_data *data)
 {
 	data->img.img_0 = mlx_xpm_file_to_image(data->mlx, "./xpm/herbe100.xpm",
 			&data->img.img_width, &data->img.img_height);
+	if (data->img.img_0 == 0)
+		error_img(data);
 	data->img.img_p = mlx_xpm_file_to_image(data->mlx, "./xpm/psg100.xpm",
 			&data->img.img_width, &data->img.img_height);
+	if (data->img.img_p == 0)
+		error_img(data);
 	data->img.img_e = mlx_xpm_file_to_image(data->mlx, "./xpm/exit100.xpm",
 			&data->img.img_width, &data->img.img_height);
+	if (data->img.img_e == 0)
+		error_img(data);
 	data->img.img_c = mlx_xpm_file_to_image(data->mlx, "./xpm/om100.xpm",
 			&data->img.img_width, &data->img.img_height);
+	if (data->img.img_c == 0)
+		error_img(data);
 	data->img.img_1 = mlx_xpm_file_to_image(data->mlx, "./xpm/wall100.xpm",
 			&data->img.img_width, &data->img.img_height);
+	if (data->img.img_1 == 0)
+		error_img(data);
 	set_background(data);
 	set_items(data);
 }

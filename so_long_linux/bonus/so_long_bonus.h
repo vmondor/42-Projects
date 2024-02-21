@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:02:46 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/20 16:23:09 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/21 10:46:45 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	error(char *str, char **tab);
 int		so_long(char **map);
 
 /* CLOSE */
+int		error_img(t_bonus *data);
 int		close_window(t_bonus *data);
 
 /* SO_LONG */

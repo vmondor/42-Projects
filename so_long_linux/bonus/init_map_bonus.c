@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:31:14 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/20 20:41:30 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/21 10:52:09 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,31 +88,43 @@ static void	set_images(t_bonus *data)
 	data->img.img_0 = mlx_xpm_file_to_image(data->mlx, "./xpm/herbe100.xpm",
 			&data->img.img_width, &data->img.img_height);
 	if (!data->img.img_0)
-		close_window(data);
+		error_img(data);
 	data->img.img_p = mlx_xpm_file_to_image(data->mlx, "./xpm/psg100.xpm",
 			&data->img.img_width, &data->img.img_height);
 	if (!data->img.img_p)
-		close_window(data);
+		error_img(data);
 	data->img.img_e = mlx_xpm_file_to_image(data->mlx, "./xpm/exit100.xpm",
 			&data->img.img_width, &data->img.img_height);
 	if (!data->img.img_e)
-		close_window(data);
+		error_img(data);
 	data->img.img_c = mlx_xpm_file_to_image(data->mlx, "./xpm/om100.xpm",
 			&data->img.img_width, &data->img.img_height);
 	if (!data->img.img_c)
-		close_window(data);
+		error_img(data);
 	data->img.img_1 = mlx_xpm_file_to_image(data->mlx, "./xpm/wall100.xpm",
 			&data->img.img_width, &data->img.img_height);
 	if (!data->img.img_1)
-		close_window(data);
+		error_img(data);
 	data->img.img_z = mlx_xpm_file_to_image(data->mlx, "./xpm/enemy100.xpm",
 			&data->img.img_width, &data->img.img_height);
 	if (!data->img.img_z)
-		close_window(data);
+		error_img(data);
 }
 
 void	init_map_bonus(t_bonus *data)
 {
+	data->count = 0;
+	data->i = 0;
+	data->j = 0;
+	data->game_won = 0;
+	data->img.img_0 = 0;
+	data->img.img_p = 0;
+	data->img.img_e = 0;
+	data->img.img_c = 0;
+	data->img.img_1 = 0;
+	data->img.img_z = 0;
+	data->img.img_height = TILE_SIZE;
+	data->img.img_width = TILE_SIZE;
 	set_images(data);
 	set_background(data);
 	set_items(data);
