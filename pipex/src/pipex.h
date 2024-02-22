@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 09:30:11 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/21 14:44:02 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/21 19:20:12 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@
 # include <fcntl.h>		// open
 # include <errno.h>		// perror
 # include <string.h>	// strerror
-# include <sys/types.h>	// for waitpid remove for push
-# include <sys/wait.h>	// for waitpid remove for push
+# include <sys/wait.h>	// for waitpid
 # include "../libft/libft.h"
 # include "../libft/ft_printf/ft_printf.h"
 
-
 /* PARSING */
-void	parsing(int ac, char **av, char **env);
+void	parsing(int ac, char **av);
 
 /* GET_PATH */
-void	get_path(char **env);
+char	**get_path(char **env);
+
+/* PIPEX */
+void	pipex(char **av, char **env, char **cmd1);
 
 /* ERROR */
 void	error(char *str);
-
 
 #endif

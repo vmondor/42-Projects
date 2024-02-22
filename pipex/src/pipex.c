@@ -6,80 +6,75 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 11:54:00 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/21 12:31:23 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/21 19:18:27 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void    execute_cmd(char *cmd, int in_fd, int out_fd)
+char	**get_args(char **cmd1, char *filename)
 {
-    pid_t   pid;
-    int     status;
+	char	**args;
+	int		i;
 
-    pid = fork();
-    if (pid == 0)
-    {
-        if (in_fd != STDIN_FILENO)
-        {
-            dup2(in_fd, STDIN_FILENO);
-            close(in_fd);
-        }
-        if (out_fd != STDOUT_FILENO)
-        {
-            dup2(out_fd, STDOUT_FILENO);
-            close(out_fd);
-        }
-        execlp(cmd, cmd, NULL);
-        perror("execlp");
-        exit(2);
-    }
-    else if (pid < 0)
-    {
-        perror("fork");
-        exit(2);
-    }
-    else
-        waitpid(pid, &status, 0);
+	args = malloc(sizeof(char *) * (ft_tablen(cmd1) + 2));
+	if (!args)
+		return (0);
+	i = 0;
+	while (cmd1[i])
+	{
+		args[i] = ft_strdup(cmd1[i]);
+		i++;
+	}
+	args[i] = ft_strdup(filename);
+	i++;
+	args[i] = NULL;
+	ft_free_tab(cmd1);
+	return (args);
 }
 
-int	main(int ac, char **av)
+int	execve_cmd(char **path, char **args)
 {
-	(void)ac;
+	int	i;
 
-	ft_printf("***** PIPEX *****\n\n");
+	i = 0;
+	while (path[i])
+	{
+		path[i] = ft_strjoin(path[i], "/");
+		path[i] = ft_strjoin(path[i], args[0]);
+		i++;
+	}
+	i = 0;
+	while (path[i])
+	{
+		execve(path[i], args, NULL);
+		i++;
+	}
+	ft_free_tab(args);
+	ft_free_tab(path);
+	return (0);
+}
+// int execve_cmd_2()
+// {
+//     const char *path = "/bin/ls";
 
-	//	cat prenom.txt | wc -l > file2.txt
-	//	./pipex prenom.txt "cat" "wc -l" file2.txt
+	// char *const args[] = {"ls", "-l", "./src", NULL};
 
-    int *fd;
-    int file_in;
-    int file_out;
+//     if (execve(path, args, NULL) == -1) {
+//         perror("execve");
+//         exit(EXIT_FAILURE);
+//     }
+//     return 0;
+// }
 
-    if (ac != 5)
-    {
-        ft_printf("Il doit y avoir 4 argument : file1 cmd1 cmd2 file2\n");
-        return (1);
-    }
-    if (!(fd = malloc(sizeof(int) * 2)))
-        return (1);
-    file_in = open(av[1], O_RDONLY);
-    file_out = open(av[4], O_WRONLY | O_CREAT | O_TRUNC, 0666);
-    if (file_in < 0 || file_out < 0)
-    {
-        perror("open");
-        return (1);
-    }
+void	pipex(char **av, char **env, char **cmd1)
+{
+	char	**path;
+	char	**args;
 
-    if (pipe(fd) == -1)
-    {
-        perror("pipe");
-        return (1);
-    }
-    execute_cmd(av[2], fd[1], file_in);
-    close(fd[1]);
-
-    execute_cmd(av[3], fd[0], file_out);
-    close(fd[0]);
-    return (0);
+	path = get_path(env);
+	if (!path)
+		return ;
+	args = get_args(cmd1, av[1]);
+	execve_cmd(path, args);
 }

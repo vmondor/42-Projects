@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:31:14 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/22 17:01:01 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/21 17:26:33 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*ft_strcat(char *dest, char const *src)
 	return (dest);
 }
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
 
@@ -56,5 +56,6 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		ft_strcpy(str, s1);
 		ft_strcat(str, s2);
 	}
+	free(s1);
 	return (str);
 }

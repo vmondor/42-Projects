@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_path.c                                         :+:      :+:    :+:   */
+/*   ft_tablen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 14:42:57 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/21 19:00:07 by vmondor          ###   ########.fr       */
+/*   Created: 2024/02/21 18:25:40 by vmondor           #+#    #+#             */
+/*   Updated: 2024/02/21 18:26:30 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-char	**get_path(char **env)
+int	ft_tablen(char **tab)
 {
-	int		i;
-	char	*path_str;
-	char	**path;
+	int	i;
 
+	if (!tab)
+		return (0);
 	i = 0;
-	path_str = NULL;
-	while (env[i])
-	{
-		if (ft_strnstr(env[i], "PATH", 4))
-		{
-			path_str = ft_strdup(env[i]);
-			if (!path_str)
-				return (NULL);
-			break ;
-		}
+	while (tab[i])
 		i++;
-	}
-	path = ft_split(path_str + 5, ':');
-	free(path_str);
-	return (path);
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 09:03:15 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/21 14:59:13 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/02/21 19:35:42 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 int	main(int ac, char **av, char **env)
 {
-	// int	i;
+	char	**cmd1;
 
 	if (ac != 5)
 		error("Il faut 4 arguments");
-	parsing(ac, av, env);
-	get_path(env);
-
-	// i = 0;
-	// while (env[i])
-	// {
-	// 	ft_printf("%s\n", env[i]);
-	// 	i++;
-	// }
+	parsing(ac, av);
+	ft_printf("\n");
+	ft_printf("***********\n");
+	cmd1 = ft_split(av[2], ' ');
+	if (!cmd1)
+		return (1);
+	pipex(av, env, cmd1);
+	ft_printf("***** END *****\n");
 	return (0);
 }

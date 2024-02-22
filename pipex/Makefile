@@ -6,7 +6,7 @@
 #    By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 16:28:19 by vmondor           #+#    #+#              #
-#    Updated: 2024/02/21 14:44:12 by vmondor          ###   ########.fr        #
+#    Updated: 2024/02/21 18:00:00 by vmondor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ OBJ_PATH		= src/obj/
 SRC_FILES		=	main.c				\
 					parsing.c			\
 					get_path.c			\
+					pipex.c				\
 					error.c				\
 
 OBJ_FILES		= $(SRC_FILES:.c=.o)
