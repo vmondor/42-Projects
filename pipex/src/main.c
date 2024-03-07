@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 09:03:15 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/21 19:35:42 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/05 16:03:23 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,26 @@
 
 int	main(int ac, char **av, char **env)
 {
-	char	**cmd1;
+	char	**path;
+	int		i;
 
 	if (ac != 5)
 		error("Il faut 4 arguments");
-	parsing(ac, av);
-	ft_printf("\n");
-	ft_printf("***********\n");
-	cmd1 = ft_split(av[2], ' ');
-	if (!cmd1)
+	path = get_path(env);
+	if (!path)
+	{
+		error("Pas d'environnement");
 		return (1);
-	pipex(av, env, cmd1);
-	ft_printf("***** END *****\n");
+	}
+	ft_free_tab(path);
+	check_access_file(av[1], av[ac - 1]);
+	i = 2;
+	while (i < ac - 1)
+	{
+		if (parsing(env, av[i]) == 0)
+			error("Command not found");
+		i++;
+	}
+	pipex(ac, av, env);
 	return (0);
 }

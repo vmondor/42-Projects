@@ -6,15 +6,19 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 09:30:11 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/21 19:20:12 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/06 18:00:57 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
+
 # include <stdlib.h>	// exit
-# include <stdio.h>		// printf, perror
+# include <stdio.h>		// perror
 # include <unistd.h>	// close, access, dup, dup2, unlink, execve, fork, pipe
 # include <fcntl.h>		// open
 # include <errno.h>		// perror
@@ -23,16 +27,54 @@
 # include "../libft/libft.h"
 # include "../libft/ft_printf/ft_printf.h"
 
-/* PARSING */
-void	parsing(int ac, char **av);
+typedef struct s_data
+{
+	int		**pipefd;
+	int		*pids;
+	int		nbfork;
+	int		fd_infile;
+	int		fd_outfile;
+	int		ac;
+	char	**path;
+	char	**args;
+	char	*command_to_execute;
+}					t_data;
 
-/* GET_PATH */
+/* GET_NEXT_LINE */
+char	*ft_strchr(char *s, int c);
+char	*ft_strcpy(char *dest, char *src);
+char	*get_next_line(int fd);
+
+/* PARSING */
+int		parsing(char **env, char *cmd);
+
+/* INIT_VALUES */
+void	init_pipe(t_data *data);
+void	init_pids(t_data *data);
+void	init_data(t_data *data, char **env, char *cmd);
+
+/* GET_PATH 4 OK */
 char	**get_path(char **env);
+void	get_command_path(t_data *data);
 
 /* PIPEX */
-void	pipex(char **av, char **env, char **cmd1);
+void	pipex(int ac, char **av, char **env);
+
+/* PIPEX_UTILS */
+void	ft_dup2(int file_dest, int file_src);
+void	check_access_file(char *infile, char *outfile);
+int		open_infile(char *filename);
+void	close_pipefd(t_data *data);
+void	cleanup(t_data *data);
+
+/* PROCESS */
+int		execute_command(t_data *data, char *cmd);
+void	process_child(t_data *data, char **env, char **av);
 
 /* ERROR */
+void	free_pipefd(t_data *data);
+void	error_outfile(t_data *data);
+void	error_pid(int *pipefd);
 void	error(char *str);
 
 #endif

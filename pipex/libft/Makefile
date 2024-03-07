@@ -6,7 +6,7 @@
 #    By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 19:47:45 by vmondor           #+#    #+#              #
-#    Updated: 2024/02/21 18:27:15 by vmondor          ###   ########.fr        #
+#    Updated: 2024/02/28 12:33:15 by vmondor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ SRC_FILES		= ft_isalpha.c \
 					ft_lstmap.c	\
 					ft_free_tab.c \
 					ft_tablen.c	\
+					ft_strcmp.c	\
 
 OBJ_FILES		= ${SRC_FILES:.c=.o}
 OBJS			= ${addprefix ${OBJ_PATH}, ${OBJ_FILES}}

@@ -6,75 +6,52 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 11:54:00 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/21 19:18:27 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/06 10:48:31 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	**get_args(char **cmd1, char *filename)
+static void	before_start(t_data *data, int ac, char **av)
 {
-	char	**args;
-	int		i;
-
-	args = malloc(sizeof(char *) * (ft_tablen(cmd1) + 2));
-	if (!args)
-		return (0);
-	i = 0;
-	while (cmd1[i])
-	{
-		args[i] = ft_strdup(cmd1[i]);
-		i++;
-	}
-	args[i] = ft_strdup(filename);
-	i++;
-	args[i] = NULL;
-	ft_free_tab(cmd1);
-	return (args);
+	(void)av;
+	data->ac = ac;
+	init_pipe(data);
+	init_pids(data);
 }
 
-int	execve_cmd(char **path, char **args)
+static void	wait_child(t_data *data)
 {
 	int	i;
 
 	i = 0;
-	while (path[i])
-	{
-		path[i] = ft_strjoin(path[i], "/");
-		path[i] = ft_strjoin(path[i], args[0]);
-		i++;
-	}
-	i = 0;
-	while (path[i])
-	{
-		execve(path[i], args, NULL);
-		i++;
-	}
-	ft_free_tab(args);
-	ft_free_tab(path);
-	return (0);
+	while (i < (data->ac - 3))
+		waitpid(data->pids[i++], NULL, 0);
 }
-// int execve_cmd_2()
-// {
-//     const char *path = "/bin/ls";
 
-	// char *const args[] = {"ls", "-l", "./src", NULL};
-
-//     if (execve(path, args, NULL) == -1) {
-//         perror("execve");
-//         exit(EXIT_FAILURE);
-//     }
-//     return 0;
-// }
-
-void	pipex(char **av, char **env, char **cmd1)
+void	pipex(int ac, char **av, char **env)
 {
-	char	**path;
-	char	**args;
+	t_data	data;
+	pid_t	pid;
 
-	path = get_path(env);
-	if (!path)
-		return ;
-	args = get_args(cmd1, av[1]);
-	execve_cmd(path, args);
+	before_start(&data, ac, av);
+	data.nbfork = 0;
+	while (data.nbfork < (data.ac - 3))
+	{
+		pid = fork();
+		if (pid == -1)
+		{
+			perror("fork");
+			exit(EXIT_FAILURE);
+		}
+		else if (pid == 0)
+			process_child(&data, env, av);
+		else
+			data.pids[data.nbfork] = pid;
+		data.nbfork++;
+	}
+	close_pipefd(&data);
+	wait_child(&data);
+	free_pipefd(&data);
+	free(data.pids);
 }
