@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 14:25:40 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/09 14:32:37 by vmondor          ###   ########.fr       */
+/*   Created: 2024/03/09 14:51:12 by vmondor           #+#    #+#             */
+/*   Updated: 2024/03/09 14:58:42 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "projet_bonus.h"
 
-int	ft_strlen(const char *s)
+int	main(void)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	ft_printf("Main Bonus\n");
+	return (0);
 }

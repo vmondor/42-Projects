@@ -6,26 +6,13 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:27:53 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/22 18:13:16 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/09 15:22:15 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_strcpy(char *dst, const char *src)
-{
-	int	i;
-
-	i = 0;
-	while (src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-}
-
-char	*ft_strdup(const char *s)
+char	*ft_strdup(char *s)
 {
 	char	*str;
 

@@ -6,11 +6,11 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:34:17 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/09 13:52:20 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/09 14:36:07 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "libft.h"
 
 char	*ft_stash_to_line(char *stash)
 {
@@ -73,7 +73,7 @@ char	*ft_read_and_stash(int fd, char *stash, int nb_char)
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
-	while (!ft_strchr(stash, '\n') && nb_char != 0)
+	while (!ft_strchr_gnl(stash, '\n') && nb_char != 0)
 	{
 		nb_char = read(fd, buf, BUFFER_SIZE);
 		if (nb_char == -1)
@@ -90,7 +90,7 @@ char	*ft_read_and_stash(int fd, char *stash, int nb_char)
 		else
 			stash = ft_strjoin(stash, buf);
 	}
-	free (buf);
+	free(buf);
 	return (stash);
 }
 
@@ -110,11 +110,11 @@ char	*get_next_line(int fd)
 	stash[fd] = ft_clean_stash(stash[fd]);
 	if (line[0] == '\0')
 	{
+		free(stash[fd]);
+		stash[fd] = NULL;
 		free(line);
 		return (NULL);
 	}
-	free(stash[fd]);
-	stash[fd] = NULL;
 	return (line);
 }
 

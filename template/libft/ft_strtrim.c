@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:52:24 by vmondor           #+#    #+#             */
-/*   Updated: 2024/02/23 11:36:33 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/09 15:25:41 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static size_t	ft_begin(char const *s1, char const *set)
 	i = 0;
 	while (i < len_s1)
 	{
-		if (ft_strchrl(set, s1[i]) == 0)
+		if (ft_strchr(set, s1[i]) == 0)
 			break ;
 		i++;
 	}
@@ -37,14 +37,14 @@ static size_t	ft_end(char const *s1, char const *set)
 	i = 0;
 	while (i < len_s1)
 	{
-		if (ft_strchrl(set, s1[len_s1 - i - 1]) == 0)
+		if (ft_strchr(set, s1[len_s1 - i - 1]) == 0)
 			break ;
 		i++;
 	}
 	return (len_s1 - i);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char *s1, char const *set)
 {
 	char	*str;
 	size_t	begin;

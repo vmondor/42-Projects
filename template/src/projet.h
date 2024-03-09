@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   projet.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 14:25:40 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/09 14:32:37 by vmondor          ###   ########.fr       */
+/*   Created: 2024/03/09 14:53:13 by vmondor           #+#    #+#             */
+/*   Updated: 2024/03/09 14:58:20 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PROJET_H
+# define PROJET_H
 
-int	ft_strlen(const char *s)
-{
-	int	i;
+# include "../libft/libft.h"
+# include "../libft/ft_printf/ft_printf.h"
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
+#endif
