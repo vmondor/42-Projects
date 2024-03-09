@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 14:42:57 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/03 16:03:34 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/09 13:54:13 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ char	**get_path(char **env)
 
 static void	compare_with_absolute(t_data *data)
 {
-	int	i;
-
-	i = 0;
 	if (access(data->args[0], F_OK) == 0)
 		data->command_to_execute = data->args[0];
 	else
@@ -57,7 +54,7 @@ static int	compare_with_relative(t_data *data)
 
 	i = 0;
 	while (data->path[i])
-	{	
+	{
 		data->path[i] = ft_strjoin(data->path[i], "/");
 		data->path[i] = ft_strjoin(data->path[i], data->args[0]);
 		if (access(data->path[i], F_OK) == 0)

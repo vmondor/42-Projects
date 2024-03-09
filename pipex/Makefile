@@ -6,7 +6,7 @@
 #    By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 16:28:19 by vmondor           #+#    #+#              #
-#    Updated: 2024/03/06 18:15:35 by vmondor          ###   ########.fr        #
+#    Updated: 2024/03/09 14:12:57 by vmondor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,6 @@ SRC_PATH_BONUS	= bonus/
 OBJ_PATH_BONUS	= bonus/obj/
 
 SRC_FILES		=	main.c					\
-					get_next_line_utils.c	\
-					get_next_line.c			\
 					parsing.c				\
 					get_path.c				\
 					pipex.c					\

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                     	            :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 00:38:36 by vmondor           #+#    #+#             */
-/*   Updated: 2023/12/08 14:23:31 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/09 13:55:22 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_putnbr(int nb)
 		nb = nb * -1;
 	}
 	if (nb > 9)
-	{	
+	{
 		count += ft_putnbr(nb / 10);
 		count += ft_putnbr(nb % 10);
 	}
@@ -45,7 +45,7 @@ int	ft_putnbr_u(unsigned int nb)
 
 	count = 0;
 	if (nb > 9)
-	{	
+	{
 		count += ft_putnbr_u(nb / 10);
 		count += ft_putnbr_u(nb % 10);
 	}
@@ -62,7 +62,7 @@ int	ft_putnbr_base(unsigned long long nb, char *base)
 
 	count = 0;
 	if (nb > 16 - 1)
-	{	
+	{
 		count += ft_putnbr_base(nb / 16, base);
 		count += ft_putnbr_base(nb % 16, base);
 	}
@@ -86,7 +86,7 @@ int	ft_pointer(unsigned long long nb, char *base)
 	else
 		count += ft_putstr("0x");
 	if (nb > 16 - 1)
-	{	
+	{
 		count += ft_putnbr_base(nb / 16, base);
 		count += ft_putnbr_base(nb % 16, base);
 	}

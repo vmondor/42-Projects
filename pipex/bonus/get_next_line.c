@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:34:17 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/06 15:03:06 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/09 13:52:20 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,11 @@ char	*get_next_line(int fd)
 	stash[fd] = ft_clean_stash(stash[fd]);
 	if (line[0] == '\0')
 	{
-		free(stash[fd]);
-		stash[fd] = NULL;
 		free(line);
 		return (NULL);
 	}
+	free(stash[fd]);
+	stash[fd] = NULL;
 	return (line);
 }
 
