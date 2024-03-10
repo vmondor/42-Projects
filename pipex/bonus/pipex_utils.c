@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 18:02:18 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/10 19:43:52 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/10 19:59:31 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	check_access_file(char *infile, char *outfile)
 		perror("Error outfile");
 		exit(EXIT_FAILURE);
 	}
+	else if (access(outfile, F_OK) == -1)
+		open(outfile, O_CREAT | O_TRUNC, 0644);
 }
 
 int	open_infile(char *filename)

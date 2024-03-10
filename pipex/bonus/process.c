@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 12:41:53 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/10 19:46:30 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/10 20:02:30 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static int	execute_command(t_data *data, char *cmd, char **env)
 	if (parsing(env, cmd) == 0)
 	{
 		cleanup(data);
+		dup2(STDIN_FILENO, STDOUT_FILENO);
 		error("Error: Command not found\n");
 	}
 	data->args = get_execute_args(cmd);
@@ -67,11 +68,9 @@ static int	execute_command(t_data *data, char *cmd, char **env)
 void	open_outfile(t_data *data, char **av)
 {
 	if (ft_strcmp(av[1], "here_doc"))
-		data->fd_outfile = open(av[data->ac - 1],
-				O_WRONLY | O_APPEND | O_CREAT, 0644);
+		data->fd_outfile = open(av[data->ac - 1], O_WRONLY | O_APPEND);
 	else
-		data->fd_outfile = open(av[data->ac - 1],
-				O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		data->fd_outfile = open(av[data->ac - 1], O_WRONLY);
 	if (data->fd_outfile == -1)
 		error_outfile(data);
 	ft_dup2(data->fd_outfile, STDOUT_FILENO);
