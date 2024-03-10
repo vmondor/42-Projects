@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 14:42:57 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/09 14:10:44 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/10 13:58:30 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	compare_with_relative(t_data *data)
 
 	i = 0;
 	while (data->path[i])
-	{
+	{	
 		data->path[i] = ft_strjoin(data->path[i], "/");
 		data->path[i] = ft_strjoin(data->path[i], data->args[0]);
 		if (access(data->path[i], F_OK) == 0)

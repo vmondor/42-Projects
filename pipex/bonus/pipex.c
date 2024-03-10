@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 11:54:00 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/07 15:51:26 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/07 20:15:23 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,8 @@ void	pipex(int ac, char **av, char **env)
 	}
 	close_all(&data);
 	if (ft_strcmp(av[1], "here_doc"))
+	{
 		ft_free_tab(av);
+		unlink("here_doc");
+	}
 }

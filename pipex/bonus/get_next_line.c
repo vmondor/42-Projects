@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:34:17 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/09 13:52:20 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/07 20:12:32 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,22 @@ char	*ft_read_and_stash(int fd, char *stash, int nb_char)
 	return (stash);
 }
 
+void	cleanup_stash_fd(int fd, char **stash)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4096)
+	{
+		if (stash[fd] != NULL)
+		{
+			free(stash[fd]);
+			stash[fd] = NULL;
+		}
+		i++;
+	}
+}
+
 char	*get_next_line(int fd)
 {
 	static char		*stash[4096];
@@ -110,11 +126,12 @@ char	*get_next_line(int fd)
 	stash[fd] = ft_clean_stash(stash[fd]);
 	if (line[0] == '\0')
 	{
+		free(stash[fd]);
+		stash[fd] = NULL;
 		free(line);
 		return (NULL);
 	}
-	free(stash[fd]);
-	stash[fd] = NULL;
+	cleanup_stash_fd(fd, stash);
 	return (line);
 }
 
