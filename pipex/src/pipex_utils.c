@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 18:02:18 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/06 17:56:51 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/10 19:38:18 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,13 @@ void	cleanup(t_data *data)
 		ft_free_tab(data->path);
 	if (data->args)
 		ft_free_tab(data->args);
+	if (data->pipefd)
+	{
+		close_pipefd(data);
+		free_pipefd(data);
+	}
+	if (data->pids)
+		free(data->pids);
+	if (data->command_to_execute)
+		free(data->command_to_execute);
 }

@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 09:03:15 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/06 11:10:00 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/10 19:42:26 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int ac, char **av, char **env)
 {
 	char	**path;
-	int		i;
 
 	check_here_doc(ac, av, env);
 	if (ac < 5)
@@ -28,13 +27,6 @@ int	main(int ac, char **av, char **env)
 	}
 	ft_free_tab(path);
 	check_access_file(av[1], av[ac - 1]);
-	i = 2;
-	while (i < ac - 1)
-	{
-		if (parsing(env, av[i]) == 0)
-			error("Command not found");
-		i++;
-	}
 	pipex(ac, av, env);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 09:30:11 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/07 20:04:47 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/10 19:38:25 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	close_pipefd(t_data *data);
 void	cleanup(t_data *data);
 
 /* PROCESS */
-int		execute_command(t_data *data, char *cmd);
 void	process_child(t_data *data, char **env, char **av);
 
 /* ERROR */
