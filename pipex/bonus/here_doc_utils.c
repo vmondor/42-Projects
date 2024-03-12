@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:52:21 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/12 16:00:48 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/12 16:54:12 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,16 @@ void	loop_p2(char *currentline, char *line, char *limiter)
 	ft_printf("%s", line);
 }
 
-void	line_is_null(char *currentline, char *line, char *limiter)
+int		line_is_null(char *line, char *limiter)
 {
 	if (!line)
 	{
-		cleanup_str(currentline, line, limiter);
-		ft_putstr_fd("\nThe program wait (LIMITER)", 0);
-		unlink("here_doc");
-		exit(EXIT_FAILURE);
+		cleanup_str(NULL, line, limiter);
+		ft_putstr_fd("\nbash: warning: here-document delimited by end-of-file (wanted `LIMITER')\n", 0);
+		return (1);
 	}
+	return (0);
+
 }
 
 void	cleanup_str(char *str1, char *str2, char *str3)

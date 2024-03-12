@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 10:58:26 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/12 16:12:15 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/12 16:54:20 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	loop_read_stdin(char *currentline, char *limiter)
 			free(line);
 			continue ;
 		}
-		line_is_null(currentline, line, limiter);
+		if (line_is_null(line, limiter))
+			break ;
 		loop_p2(currentline, line, limiter);
 		if (line)
 		{
