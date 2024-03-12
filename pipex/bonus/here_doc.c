@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 10:58:26 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/12 10:33:48 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/12 16:12:15 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,52 +28,43 @@ void	check_here_doc(int ac, char **av, char **env)
 	}
 }
 
-char	*get_limiter(char *str)
+int	check_limiter(char *line, char *limiter)
 {
-	char	*limiter;
-	int		i;
-
-	limiter = malloc(sizeof(char) * (ft_strlen(str) + 2));
-	if (!limiter)
-		return (NULL);
-	i = 0;
-	while (str[i])
+	if (ft_strcmp(line, limiter))
 	{
-		limiter[i] = str[i];
-		i++;
+		cleanup_str(NULL, line, limiter);
+		return (1);
 	}
-	limiter[i] = '\n';
-	i++;
-	limiter[i] = '\0';
-	return (limiter);
+	return (0);
 }
 
-void	loop_read_stdin(char **av)
+void	loop_read_stdin(char *currentline, char *limiter)
 {
-	char	*line;
-	char	*limiter;
-
-	limiter = get_limiter(av[2]);
+	char *(line) = NULL;
 	while (1)
 	{
-		ft_putstr_fd("> ", 0);
+		if (currentline && currentline[ft_strlen(currentline) - 1] == '\n')
+			ft_putstr_fd("> ", 0);
 		line = get_next_line(0);
-		if (ft_strcmp(line, limiter))
-		{
-			free(line);
-			free(limiter);
+		if (check_limiter(line, limiter))
 			break ;
-		}
-		if (access("here_doc", F_OK) == -1)
+		if (!currentline || currentline[ft_strlen(currentline) - 1] != '\n')
 		{
+			free(currentline);
+			currentline = ft_strdup(line);
 			free(line);
-			free(limiter);
-			perror("Not exist file");
-			exit(EXIT_FAILURE);
+			continue ;
 		}
-		ft_printf("%s", line);
+		line_is_null(currentline, line, limiter);
+		loop_p2(currentline, line, limiter);
+		if (line)
+		{
+			free(currentline);
+			currentline = ft_strdup(line);
+		}
 		free(line);
 	}
+	free(currentline);
 }
 
 void	here_doc(int ac, char **av, char **env)
@@ -81,37 +72,18 @@ void	here_doc(int ac, char **av, char **env)
 	char	**args;
 	int		fd_temp;
 	int		fd_stout;
+	char	*currentline;
+	char	*limiter;
 
 	fd_stout = dup(STDOUT_FILENO);
 	fd_temp = open("here_doc", O_RDWR | O_CREAT, 0644);
 	ft_dup2(fd_temp, STDOUT_FILENO);
-	loop_read_stdin(av);
+	limiter = get_limiter(av[2]);
+	currentline = ft_strdup(limiter);
+	loop_read_stdin(currentline, limiter);
 	close(fd_temp);
 	dup2(fd_stout, STDOUT_FILENO);
 	close(fd_stout);
 	args = perso_args(av);
 	pipex(ac - 1, args, env);
-}
-
-char	**perso_args(char **av)
-{
-	char	**args;
-	int		i;
-	int		j;
-
-	args = malloc(sizeof(char *) * (ft_tablen(av)));
-	if (!args)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (av[i])
-	{
-		if (i == 2)
-			i++;
-		args[j] = ft_strdup(av[i]);
-		i++;
-		j++;
-	}
-	args[j] = NULL;
-	return (args);
 }

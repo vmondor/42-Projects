@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 11:54:00 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/07 20:15:23 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/12 12:45:03 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	before_start(t_data *data, int ac, char **av)
 	data->fd_infile = open(av[1], O_RDONLY);
 	if (data->fd_infile == -1)
 		return ;
+	close(data->fd_infile);
 }
 
 static void	wait_child(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:27:53 by vmondor           #+#    #+#             */
-/*   Updated: 2023/11/22 18:13:16 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/12 13:09:04 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	*ft_strdup(const char *s)
 {
 	char	*str;
 
+	if (!s)
+		return (NULL);
 	str = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!str)
 		return (NULL);

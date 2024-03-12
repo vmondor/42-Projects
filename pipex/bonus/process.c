@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 12:41:53 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/12 10:44:19 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/12 12:44:20 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	open_outfile(t_data *data, char **av)
 		error_outfile(data);
 	ft_dup2(data->fd_outfile, STDOUT_FILENO);
 	close(data->fd_outfile);
+	close(data->fd_infile);
 }
 
 void	process_child(t_data *data, char **env, char **av)
@@ -86,6 +87,7 @@ void	process_child(t_data *data, char **env, char **av)
 	init_data(data, env, av[data->nbfork + 2]);
 	if (data->nbfork == 0)
 	{
+		data->fd_infile = open(av[1], O_RDONLY);
 		ft_dup2(data->fd_infile, STDIN_FILENO);
 		close (data->fd_infile);
 	}
