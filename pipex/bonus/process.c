@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 12:41:53 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/10 20:22:10 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/12 10:44:19 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,8 @@ static int	execute_command(t_data *data, char *cmd, char **av, char **env)
 {
 	if (parsing(env, cmd) == 0)
 	{
-		if (ft_strcmp(av[1], "here_doc") == 1)
-		{
-			ft_putstr_fd("STOOOP", 0);
-			unlink(av[1]);
-		}
+		if (ft_strcmp(av[1], "here_doc"))
+			ft_free_tab(av);
 		cleanup(data);
 		dup2(STDIN_FILENO, STDOUT_FILENO);
 		error("Error: Command not found\n");

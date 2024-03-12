@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 10:58:26 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/07 19:58:25 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/12 10:33:48 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	here_doc(int ac, char **av, char **env)
 {
 	char	**args;
 	int		fd_temp;
-	int		i;
 	int		fd_stout;
 
 	fd_stout = dup(STDOUT_FILENO);
@@ -91,16 +90,6 @@ void	here_doc(int ac, char **av, char **env)
 	dup2(fd_stout, STDOUT_FILENO);
 	close(fd_stout);
 	args = perso_args(av);
-	i = 3;
-	while (i < ac - 1)
-	{
-		if (parsing(env, av[i]) == 0)
-		{
-			ft_free_tab(args);
-			error("Command not found");
-		}
-		i++;
-	}
 	pipex(ac - 1, args, env);
 }
 
