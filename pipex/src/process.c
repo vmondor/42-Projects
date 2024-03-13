@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 12:41:53 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/10 19:57:16 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/13 13:48:31 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	process_child(t_data *data, char **env, char **av)
 		ft_dup2(data->pipefd[data->nbfork][1], STDOUT_FILENO);
 	else if (data->nbfork == (data->ac - 4))
 	{
-		data->fd_outfile = open(av[data->ac - 1], O_WRONLY);
+		data->fd_outfile = open(av[data->ac - 1], O_WRONLY | O_TRUNC);
 		ft_dup2(data->fd_outfile, STDOUT_FILENO);
 		close(data->fd_outfile);
 	}

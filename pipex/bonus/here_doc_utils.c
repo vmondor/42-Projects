@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:52:21 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/12 16:54:12 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/13 11:13:26 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,15 @@ void	loop_p2(char *currentline, char *line, char *limiter)
 	ft_printf("%s", line);
 }
 
-int		line_is_null(char *line, char *limiter)
+int	line_is_null(char *line, char *limiter)
 {
 	if (!line)
 	{
 		cleanup_str(NULL, line, limiter);
-		ft_putstr_fd("\nbash: warning: here-document delimited by end-of-file (wanted `LIMITER')\n", 0);
+		ft_putstr_fd("\nbash: warning: here-document (wanted `LIMITER')\n", 0);
 		return (1);
 	}
 	return (0);
-
 }
 
 void	cleanup_str(char *str1, char *str2, char *str3)

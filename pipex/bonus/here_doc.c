@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 10:58:26 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/12 16:54:20 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/13 11:33:48 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ void	loop_read_stdin(char *currentline, char *limiter)
 		if (currentline && currentline[ft_strlen(currentline) - 1] == '\n')
 			ft_putstr_fd("> ", 0);
 		line = get_next_line(0);
-		if (check_limiter(line, limiter))
-			break ;
 		if (!currentline || currentline[ft_strlen(currentline) - 1] != '\n')
 		{
 			free(currentline);
@@ -55,7 +53,7 @@ void	loop_read_stdin(char *currentline, char *limiter)
 			free(line);
 			continue ;
 		}
-		if (line_is_null(line, limiter))
+		if (line_is_null(line, limiter) || check_limiter(line, limiter))
 			break ;
 		loop_p2(currentline, line, limiter);
 		if (line)
