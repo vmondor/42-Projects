@@ -6,11 +6,11 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:34:17 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/09 14:38:51 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/16 13:21:09 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_stash_to_line(char *stash)
 {
@@ -96,7 +96,7 @@ char	*ft_read_and_stash(int fd, char *stash, int nb_char)
 
 char	*get_next_line(int fd)
 {
-	static char		*stash[4096];
+	static char		*stash[1024];
 	char			*line;
 	int				nb_char;
 
@@ -117,3 +117,19 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
+
+/*#include <stdio.h>
+#include <fcntl.h>
+
+int	main(void)
+{
+	int	fd;
+
+	fd = open("file.txt", O_RDONLY);
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+}*/
