@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 12:41:53 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/07 15:42:53 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/12 12:44:20 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,16 @@ static char	**get_execute_args(char *cmd)
 		return (split_cmd);
 }
 
-static int	execute_command(t_data *data, char *cmd)
+static int	execute_command(t_data *data, char *cmd, char **av, char **env)
 {
+	if (parsing(env, cmd) == 0)
+	{
+		if (ft_strcmp(av[1], "here_doc"))
+			ft_free_tab(av);
+		cleanup(data);
+		dup2(STDIN_FILENO, STDOUT_FILENO);
+		error("Error: Command not found\n");
+	}
 	data->args = get_execute_args(cmd);
 	if (execve(data->command_to_execute, data->args, NULL) == -1)
 	{
@@ -71,6 +79,7 @@ void	open_outfile(t_data *data, char **av)
 		error_outfile(data);
 	ft_dup2(data->fd_outfile, STDOUT_FILENO);
 	close(data->fd_outfile);
+	close(data->fd_infile);
 }
 
 void	process_child(t_data *data, char **env, char **av)
@@ -78,6 +87,7 @@ void	process_child(t_data *data, char **env, char **av)
 	init_data(data, env, av[data->nbfork + 2]);
 	if (data->nbfork == 0)
 	{
+		data->fd_infile = open(av[1], O_RDONLY);
 		ft_dup2(data->fd_infile, STDIN_FILENO);
 		close (data->fd_infile);
 	}
@@ -90,5 +100,5 @@ void	process_child(t_data *data, char **env, char **av)
 	else
 		ft_dup2(data->pipefd[data->nbfork][1], STDOUT_FILENO);
 	close_pipefd(data);
-	execute_command(data, av[data->nbfork + 2]);
+	execute_command(data, av[data->nbfork + 2], av, env);
 }

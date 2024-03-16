@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 09:30:11 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/06 18:00:57 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/10 19:38:25 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,6 @@ typedef struct s_data
 	char	*command_to_execute;
 }					t_data;
 
-/* GET_NEXT_LINE */
-char	*ft_strchr(char *s, int c);
-char	*ft_strcpy(char *dest, char *src);
-char	*get_next_line(int fd);
-
 /* PARSING */
 int		parsing(char **env, char *cmd);
 
@@ -68,7 +63,6 @@ void	close_pipefd(t_data *data);
 void	cleanup(t_data *data);
 
 /* PROCESS */
-int		execute_command(t_data *data, char *cmd);
 void	process_child(t_data *data, char **env, char **av);
 
 /* ERROR */

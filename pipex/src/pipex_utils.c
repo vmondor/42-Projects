@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 18:02:18 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/06 17:56:51 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/13 11:53:38 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_dup2(int file_dest, int file_src)
 
 void	check_access_file(char *infile, char *outfile)
 {
+	int	fd;
+
 	if (access(infile, F_OK) == -1)
 	{
 		perror("Error infile");
@@ -40,6 +42,11 @@ void	check_access_file(char *infile, char *outfile)
 	{
 		perror("Error outfile");
 		exit(EXIT_FAILURE);
+	}
+	else if (access(outfile, F_OK) == -1)
+	{
+		fd = open(outfile, O_CREAT | O_TRUNC, 0644);
+		close(fd);
 	}
 }
 
@@ -75,4 +82,13 @@ void	cleanup(t_data *data)
 		ft_free_tab(data->path);
 	if (data->args)
 		ft_free_tab(data->args);
+	if (data->pipefd)
+	{
+		close_pipefd(data);
+		free_pipefd(data);
+	}
+	if (data->pids)
+		free(data->pids);
+	if (data->command_to_execute)
+		free(data->command_to_execute);
 }

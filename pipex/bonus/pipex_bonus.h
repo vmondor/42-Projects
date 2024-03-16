@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 09:30:11 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/07 15:35:04 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/12 16:54:30 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,12 @@ void	error(char *str);
 
 /* HERE_DOC */
 void	check_here_doc(int ac, char **av, char **env);
+
+/* HERE_DOC_UTILS */
+char	*get_limiter(char *str);
+char	**perso_args(char **av);
+void	loop_p2(char *currentline, char *line, char *limiter);
+int		line_is_null(char *line, char *limiter);
+void	cleanup_str(char *str1, char *str2, char *str3);
 
 #endif
