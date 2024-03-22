@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:28:47 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/16 13:16:14 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/22 13:04:45 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-size_t	ft_strlen(char *s);
-char	*ft_strchr(char *s, int c);
-char	*ft_strcpy(char *dest, char *src);
+int		ft_strlen(char *s);
+int		ft_strchr(char *s, char c);
+char	*ft_strdup(char *src);
 char	*ft_strjoin(char *s1, char *s2);
 char	*get_next_line(int fd);
 

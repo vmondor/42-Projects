@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:34:17 by vmondor           #+#    #+#             */
-/*   Updated: 2024/03/16 13:21:09 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/22 13:06:14 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,7 @@ char	*ft_read_and_stash(int fd, char *stash, int nb_char)
 		}
 		buf[nb_char] = '\0';
 		if (!stash)
-		{
-			stash = malloc(sizeof(char) * (nb_char + 1));
-			stash = ft_strcpy(stash, buf);
-		}
+			stash = ft_strdup(buf);
 		else
 			stash = ft_strjoin(stash, buf);
 	}
@@ -96,40 +93,42 @@ char	*ft_read_and_stash(int fd, char *stash, int nb_char)
 
 char	*get_next_line(int fd)
 {
-	static char		*stash[1024];
+	static char		*stash;
 	char			*line;
 	int				nb_char;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	nb_char = 1;
-	stash[fd] = ft_read_and_stash(fd, stash[fd], nb_char);
-	if (!stash[fd])
+	stash = ft_read_and_stash(fd, stash, nb_char);
+	if (!stash)
 		return (NULL);
-	line = ft_stash_to_line(stash[fd]);
-	stash[fd] = ft_clean_stash(stash[fd]);
+	line = ft_stash_to_line(stash);
+	if (!line)
+		return (NULL);
+	stash = ft_clean_stash(stash);
 	if (line[0] == '\0')
 	{
-		free(stash[fd]);
-		stash[fd] = NULL;
+		free(stash);
+		stash = NULL;
 		free(line);
 		return (NULL);
 	}
 	return (line);
 }
 
-/*#include <stdio.h>
-#include <fcntl.h>
+// #include <stdio.h>
+// #include <fcntl.h>
 
-int	main(void)
-{
-	int	fd;
+// int	main(void)
+// {
+// 	int	fd;
 
-	fd = open("file.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-}*/
+// 	fd = open("file.txt", O_RDONLY);
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// }

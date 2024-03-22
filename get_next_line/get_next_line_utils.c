@@ -6,15 +6,15 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:35:06 by vmondor           #+#    #+#             */
-/*   Updated: 2023/12/06 21:27:56 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/22 12:55:52 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (s[i])
@@ -22,26 +22,32 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
-char	*ft_strchr(char *s, int c)
+int	ft_strchr(char *s, char c)
 {
 	int	i;
 
 	if (!s)
-		return (NULL);
+		return (0);
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
+		if (s[i] == c)
+			return (1);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
 
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strdup(char *src)
 {
-	int	i;
+	int		i;
+	char	*dest;
 
+	if (!src)
+		return (NULL);
+	dest = malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (!dest)
+		return (NULL);
 	i = 0;
 	while (src[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: vmondor <vmondor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:34:17 by vmondor           #+#    #+#             */
-/*   Updated: 2023/12/08 14:31:21 by vmondor          ###   ########.fr       */
+/*   Updated: 2024/03/22 13:00:18 by vmondor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,7 @@ char	*ft_read_and_stash(int fd, char *stash, int nb_char)
 		}
 		buf[nb_char] = '\0';
 		if (!stash)
-		{
-			stash = malloc(sizeof(char) * (nb_char + 1));
-			stash = ft_strcpy(stash, buf);
-		}
+			stash = ft_strdup(buf);
 		else
 			stash = ft_strjoin(stash, buf);
 	}
@@ -107,6 +104,8 @@ char	*get_next_line(int fd)
 	if (!stash)
 		return (NULL);
 	line = ft_stash_to_line(stash);
+	if (!line)
+		return (NULL);
 	stash = ft_clean_stash(stash);
 	if (line[0] == '\0')
 	{
@@ -118,18 +117,18 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*#include <stdio.h>
-#include <fcntl.h>
+// #include <stdio.h>
+// #include <fcntl.h>
 
-int	main(void)
-{
-	int	fd;
+// int	main(void)
+// {
+// 	int	fd;
 
-	fd = open("file.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-}*/
+// 	fd = open("file.txt", O_RDONLY);
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// }
